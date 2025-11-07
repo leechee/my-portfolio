@@ -17,19 +17,19 @@ import { cn } from "@/lib/utils";
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="max-w-7xl mx-auto md:h-[130vh]">
+    <section id="projects" className="max-w-7xl mx-auto pb-20 min-h-screen flex flex-col">
       <h2
         className={cn(
-          "bg-clip-text text-4xl text-center text-transparent md:text-7xl pt-16",
-          "bg-gradient-to-b from-black/80 to-black/50",
-          "dark:bg-gradient-to-b dark:from-white/80 dark:to-white/20 dark:bg-opacity-50 mb-32"
+          "text-4xl text-center md:text-7xl pt-2",
+          "text-black dark:text-white"
         )}
       >
         <Link href={"#projects"}>
           Projects
         </Link>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3">
+      <div className="mb-96"></div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 pb-12">
         {projects.map((project, index) => (
           <Modall key={project.src} project={project} />
         ))}
@@ -39,11 +39,11 @@ const ProjectsSection = () => {
 };
 const Modall = ({ project }: { project: Project }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center scale-110">
       <Modal>
         <ModalTrigger className="bg-transparent flex justify-center group/modal-btn">
           <div
-            className="relative w-[400px] h-auto rounded-lg overflow-hidden"
+            className="relative w-[480px] h-auto rounded-lg overflow-hidden"
             style={{ aspectRatio: "3/2" }}
           >
             <Image

@@ -17,9 +17,8 @@ const ContactSection = () => {
     <section id="contact" className="min-h-[80vh] w-full pb-20">
       <h2
         className={cn(
-          "bg-clip-text text-4xl text-center text-transparent md:text-7xl pt-16 mb-8 md:mb-12",
-          "bg-gradient-to-b from-black/80 to-black/50",
-          "dark:bg-gradient-to-b dark:from-white/80 dark:to-white/20 dark:bg-opacity-50"
+          "text-4xl text-center md:text-7xl pt-16 mb-8 md:mb-12",
+          "text-black dark:text-white"
         )}
       >
         <Link href={"#contact"}>
