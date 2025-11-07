@@ -30,7 +30,7 @@ import {
 import { TbBrandFramerMotion } from "react-icons/tb";
 const BASE_PATH = "/assets/projects-screenshots";
 
-const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
+const ProjectsLinks = ({ live, repo, liveLabel, repoLabel }: { live: string; repo?: string; liveLabel?: string; repoLabel?: string }) => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-start gap-3 my-3 mb-8">
       <Link
@@ -40,7 +40,7 @@ const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
         href={live}
       >
         <Button variant={"default"} size={"sm"}>
-          Visit Website
+          {liveLabel || "Visit Website"}
           <ArrowUpRight className="ml-3 w-5 h-5" />
         </Button>
       </Link>
@@ -52,7 +52,7 @@ const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
           href={repo}
         >
           <Button variant={"default"} size={"sm"}>
-            Github
+            {repoLabel || "Github"}
             <ArrowUpRight className="ml-3 w-5 h-5" />
           </Button>
         </Link>
@@ -222,6 +222,18 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiSupabase />,
   },
+  redis: {
+    title: "Redis",
+    bg: "black",
+    fg: "white",
+    icon: <SiDocker />,
+  },
+  unreal: {
+    title: "Unreal Engine",
+    bg: "black",
+    fg: "white",
+    icon: <span>UE5</span>,
+  },
 };
 export type Project = {
   id: string;
@@ -236,272 +248,133 @@ export type Project = {
 };
 const projects: Project[] = [
   {
-    id: "codingducks",
-    category: "Coding platform",
-    title: "Coding Ducks",
-    src: "/assets/projects-screenshots/codingducks/landing.png",
-    screenshots: ["landing.png"],
+    id: "twilight",
+    category: "2D Platformer Game",
+    title: "Twilight",
+    src: "/assets/Beginning.png",
+    screenshots: [],
     skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.chakra,
-        PROJECT_SKILLS.reactQuery,
-        PROJECT_SKILLS.firebase,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.express,
-        PROJECT_SKILLS.prisma,
-        PROJECT_SKILLS.python,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.sockerio,
-      ],
+      frontend: [PROJECT_SKILLS.unreal],
+      backend: [],
     },
-    live: "https://www.codingducks.xyz/",
-    github: "https://github.com/Naresh-Khatri/Coding-Ducks",
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono text-2xl text-center">
-            Coding ducks = LeetCode + CodePen + CSS Battles
-          </TypographyP>
-          <TypographyP className="font-mono ">
-            Coding Ducks is your coding dojo — where you level up your skills,
-            battle in real-time code duels, and earn badges like a true code
-            warrior. Track your progress, flex your brain, and climb the
-            leaderboard. Ready to quack the code?
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Problems </TypographyH3>
-          <p className="font-mono mb-2">
-            Solve coding problems similar to LeetCode, enhancing your
-            problem-solving skills across various languages.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/problems.png`,
-              `${BASE_PATH}/codingducks/problem.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Ducklets</TypographyH3>
-          <p className="font-mono mb-2">
-            Collaborate in real-time with others in a multiplayer coding
-            environment, just like CodePen but with a social twist.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/ducklets.png`,
-              `${BASE_PATH}/codingducks/ducklet1.png`,
-              `${BASE_PATH}/codingducks/ducklet2.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">UI Battles </TypographyH3>
-
-          <p className="font-mono mb-2">
-            Challenge yourself to create UI components with HTML/CSS/JS, and get
-            instant feedback with an automated similarity scoring.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/css-battles.png`,
-              `${BASE_PATH}/codingducks/css-battle.png`,
-              `${BASE_PATH}/codingducks/css-battle2.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Contests </TypographyH3>
-          <p className="font-mono mb-2">
-            Organize or participate in coding competitions. Successfully used to
-            host three contests during college.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/codingducks/contests.png`]} />
-          <TypographyH3 className="my-4 mt-8">Playground </TypographyH3>
-          <p className="font-mono mb-2">
-            Test and execute your code instantly in my versatile online code
-            runner.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/codingducks/playground.png`]} />
-          <TypographyH3 className="my-4 mt-8">Users</TypographyH3>
-
-          <p className="font-mono mb-2">
-            Track your progress, earn badges, and climb the rankings with
-            detailed user profiles and activity tracking.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/users.png`,
-              `${BASE_PATH}/codingducks/user.png`,
-            ]}
-          />
-        </div>
-      );
-    },
-  },
-  {
-    id: "couponluxury",
-    category: "Coupon site",
-    title: "Coupon Luxury",
-    src: "/assets/projects-screenshots/couponluxury/landing.png",
-    screenshots: ["1.png", "2.png", "3.png", "4.png", "5.png"],
-    live: "https://www.couponluxury.com/",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.js,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.chakra,
-        PROJECT_SKILLS.vue,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.express,
-        PROJECT_SKILLS.prisma,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.docker,
-      ],
-    },
-    get content(): JSX.Element {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            CouponLuxury is your go-to destination for snagging the best deals
-            without lifting a finger. Whether you&apos;re hunting for the latest
-            discounts or trying to save a buck at your favorite stores,
-            CouponLuxury&apos;s got you covered.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <p className="font-mono mb-2 mt-4">
-            As soon as you land, boom! You&apos;re greeted with the freshest
-            coupons and top-tier deals that&apos;ll make your wallet happy.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/couponluxury/landing.png`]} />
-          <TypographyH3 className="my-4 ">Stores</TypographyH3>
-          <p className="font-mono mb-2">
-            Dive into a comprehensive list of stores, each packed with exclusive
-            deals and discounts. It&apos;s like having a VIP pass to every sale
-            in town.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/couponluxury/stores.png`,
-              `${BASE_PATH}/couponluxury/store.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Categories</TypographyH3>
-
-          <p className="font-mono mb-2">
-            Whatever you&apos;re into—fashion, tech, food—you&apos;ll find it
-            neatly organized here. No more endless scrolling; just pick a
-            category and get the best offers instantly.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/couponluxury/categories.png`]} />
-          <TypographyH3 className="my-4 mt-8">Custom CMS </TypographyH3>
-          <p className="font-mono mb-2">
-            Powered by Vue.js, this bad boy allows us to keep the content
-            dynamic and up-to-date. From flash sales to limited-time offers, my
-            CMS ensures everything&apos;s live and relevant.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/couponluxury/cms-1.png`,
-              `${BASE_PATH}/couponluxury/cms-2.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 mt-5">
-            Plus, I&apos;ve sprinkled in some extra magic like personalized
-            deal recommendations, user-friendly search features, and a sleek,
-            responsive design that works like a charm on any device.
-          </p>
-          <p className="font-mono mb-2">
-            CouponLuxury isn&apos;t just a website; it&apos;s your personal deal-hunting
-            assistant, ensuring you never miss out on a bargain!
-          </p>
-          {/* <TypographyP className="my-4 mt-8">
-          <strong>Misc:</strong>
-          Hosted not one, not two, but THREE coding contests (Codemacha) during
-          college. Safe to say, Coding Ducks passed the vibe check.
-        </TypographyP>
-        <TypographyP className="my-4 mt-8">
-          <strong>Target Audience:</strong>
-          For all the novice coders out there ready to make their mark.
-        </TypographyP> */}
-        </div>
-      );
-    },
-  },
-  {
-    id: "the-booking-desk",
-    category: "Travel",
-    title: "The Booking Desk",
-    src: "/assets/projects-screenshots/the-booking-desk/landing.png",
-    screenshots: ["1.png"],
-    live: "https://thebookingdesk.com/",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.aceternity,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [PROJECT_SKILLS.sanity],
-    },
+    live: "https://github.com/leechee/Twilight",
+    github: "https://github.com/leechee/Twilight",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-            The Booking Desk is your ultimate travel consultation hub, designed
-            to turn your wanderlust dreams into reality. With a focus on smooth
-            and visually captivating animations, navigating the site feels like
-            a breeze—it&apos;s almost as if the destinations are calling you.
+            Twilight is an ambitious 2D platformer built in Unreal Engine 5, drawing heavy inspiration from Hollow Knight's atmospheric design and precise movement mechanics. This project showcases advanced game development techniques including custom character controllers, AI behavior systems, and dynamic combat mechanics.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <p className="font-mono mb-2 mt-8">
-            A sleek, modern interface greets you, featuring the latest travel
-            tips, deals, and must-visit spots around the globe.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/the-booking-desk/landing.png`]} />
-          <TypographyH3 className="my-4 mt-8">Blogs</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Movement System</TypographyH3>
           <p className="font-mono mb-2">
-            Dive into the curated articles written by travel experts. Whether
-            you&apos;re looking for hidden gems or travel hacks, our blog section has
-            you covered.
+            The character controller features smooth, responsive movement with advanced mechanics including double jumps, wall sliding, and dash abilities. Every input is carefully tuned to provide precise control and satisfying feedback, essential for challenging platforming sections.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/the-booking-desk/blogs.png`,
-              `${BASE_PATH}/the-booking-desk/blog.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Sanity CMS</TypographyH3>
-
+          <div className="my-4">
+            <video
+              controls
+              className="w-full rounded-lg"
+              src="/assets/twilight_demo.mov"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <TypographyH3 className="my-4 mt-8">Combat & AI</TypographyH3>
           <p className="font-mono mb-2">
-            Keeping everything fresh and up-to-date, I&apos;ve integrated Sanity CMS
-            to manage all the content with ease, ensuring you always get the
-            latest and greatest information.
+            Enemies utilize behavior trees and state machines to create engaging combat encounters. The AI system includes patrol patterns, aggro detection, attack patterns, and dynamic reactions to player actions. Each enemy type has unique behaviors that require different strategies to overcome.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/the-booking-desk/cms-1.png`,
-              `${BASE_PATH}/the-booking-desk/cms-2.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 my-8">
-            With a stunning 100% score on Lighthouse, The Booking Desk isn&apos;t
-            just beautiful—it&apos;s built to perform. Whether you&apos;re planning your
-            next adventure or just daydreaming, our site delivers a top-notch
-            experience that&apos;s both informative and enjoyable.
+          <TypographyH3 className="my-4 mt-8">Visual Design</TypographyH3>
+          <p className="font-mono mb-2">
+            The game features a dark, atmospheric aesthetic with hand-crafted environments and particle effects. Lighting and post-processing effects create an immersive underground world filled with mystery and danger. Every visual element is designed to enhance the melancholic yet beautiful atmosphere.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Technical Features</TypographyH3>
+          <p className="font-mono mb-2">
+            Built entirely in Unreal Engine 5, the project leverages Blueprint visual scripting for rapid prototyping and C++ for performance-critical systems. The game includes custom animation systems, collision handling, checkpoint systems, and a robust save/load mechanism.
           </p>
         </div>
       );
     },
   },
   {
-    id: "portfolio",
-    category: "Portfolio",
+    id: "echoes-of-the-unknown",
+    category: "UFO Sightings Analysis API",
+    title: "Echoes of the Unknown",
+    src: "/assets/ufo.avif",
+    screenshots: [],
+    skills: {
+      frontend: [],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.redis, PROJECT_SKILLS.docker],
+    },
+    live: "https://drive.google.com/file/d/1_cpsFN0a9iym6oAORxQHsI0QYchdqp10/view",
+    github: "https://github.com/leechee/Echoes-of-the-Unknown",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            Echoes of the Unknown is a comprehensive Flask-based REST API designed to analyze and query a massive dataset of over 80,000 UFO sightings. This microservices architecture project demonstrates scalable data processing, caching strategies, and containerized deployment.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} liveLabel="Project Writeup" />
+          <TypographyH3 className="my-4 mt-8">Microservices Architecture</TypographyH3>
+          <p className="font-mono mb-2">
+            The application is built using a microservices pattern with separate Flask services handling different aspects of data processing and analysis. Each service is independently deployable and scalable, communicating through well-defined REST endpoints. This architecture ensures high availability and easy maintenance.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Data Processing Pipeline</TypographyH3>
+          <p className="font-mono mb-2">
+            The system processes 80,000+ UFO sighting records with advanced querying capabilities including geographic filtering, temporal analysis, and pattern recognition. Redis is used as a high-performance caching layer to dramatically improve response times for frequently accessed data. The API supports complex queries for state-based searches, date range filtering, and statistical aggregations.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Deployment & Testing</TypographyH3>
+          <p className="font-mono mb-2">
+            The entire application stack is containerized using Docker and Docker Compose, enabling consistent deployment across different environments. Comprehensive unit tests ensure data integrity and API reliability. The system includes automated data ingestion, validation, and error handling to maintain high data quality standards.
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "iris-flower-classification",
+    category: "Machine Learning Tutorial",
+    title: "Iris Flower Classification",
+    src: "/assets/iris tutorial.png",
+    screenshots: [],
+    skills: {
+      frontend: [],
+      backend: [PROJECT_SKILLS.python],
+    },
+    live: "https://github.com/leechee/Iris-Flower-Classification-Tutorial/blob/main/iris_classification.ipynb",
+    github: "https://github.com/leechee/Iris-Flower-Classification-Tutorial",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            An educational deep dive into machine learning fundamentals through a hand-coded neural network implementation. This tutorial builds a classification model from scratch without high-level ML libraries, providing clear insights into how neural networks actually work under the hood.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} liveLabel="View Notebook" />
+          <TypographyH3 className="my-4 mt-8">Hand-Coded Neural Network</TypographyH3>
+          <p className="font-mono mb-2">
+            Rather than relying on TensorFlow or PyTorch, this project implements a neural network entirely from scratch using NumPy. You'll see exactly how forward propagation, backpropagation, gradient descent, and weight updates work at the mathematical level. This approach demystifies the "black box" of machine learning.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Fisher's Iris Dataset</TypographyH3>
+          <p className="font-mono mb-2">
+            Using the classic Iris flower dataset, the tutorial demonstrates multi-class classification by predicting flower species based on sepal and petal measurements. The dataset is perfect for learning because it's small enough to understand completely but complex enough to require real machine learning techniques.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Comprehensive Analysis</TypographyH3>
+          <p className="font-mono mb-2">
+            The notebook includes detailed data exploration, visualization of decision boundaries, performance metrics, and analysis of model behavior. You'll learn about training/testing splits, accuracy metrics, confusion matrices, and how to interpret model predictions.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Educational Focus</TypographyH3>
+          <p className="font-mono mb-2">
+            Every step is thoroughly documented with explanations of the mathematical concepts, code implementation details, and practical considerations. This makes it an ideal resource for anyone wanting to truly understand neural networks rather than just using them as pre-built tools.
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "my-portfolio",
+    category: "Portfolio Website",
     title: "My Portfolio",
-    src: "/assets/projects-screenshots/portfolio/landing.png",
-    screenshots: ["1.png"],
-    live: "http://nareshkhatri.vercel.app",
-    github:"https://github.com/Naresh-Khatri/Portfolio",
+    src: "/assets/myportfolio.png",
+    screenshots: [],
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
@@ -514,47 +387,30 @@ const projects: Project[] = [
       ],
       backend: [],
     },
+    live: "https://github.com/leechee/my-portfolio",
+    github: "https://github.com/leechee/my-portfolio",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-            Welcome to my digital playground, where creativity meets code in the
-            dopest way possible.
+            A modern, interactive portfolio website built with Next.js 14 and cutting-edge web technologies. Features a stunning 3D robot companion that follows your cursor, smooth scrolling animations, and a comprehensive showcase of projects and experience.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">
-            Beautiful 3D Objects{" "}
-          </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Interactive 3D Robot</TypographyH3>
           <p className="font-mono mb-2">
-            Did you see that 3D keyboard modal? Yeah! I made that. That
-            interactive keyboard is being rendered in 3D on a webpage 🤯, and
-            pressing each keycap reveals a skill in a goofy way. It&apos;s like
-            typing, but make it art.
+            The centerpiece of the portfolio is an interactive 3D robot model created with Spline and seamlessly integrated into the Next.js application. The robot dynamically follows your cursor movements, creating an engaging and playful user experience. This demonstrates advanced 3D web integration and real-time interaction handling.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/landing.png`,
-              `${BASE_PATH}/portfolio/skills.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 ">Space Theme</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Smooth Scrolling & Animations</TypographyH3>
           <p className="font-mono mb-2">
-            Dark background + floating particles = out-of-this-world cool.
+            Powered by Framer Motion and Aceternity UI, the site features buttery-smooth scroll animations, parallax effects, and micro-interactions throughout. Every section transition is carefully choreographed to guide the user's attention and create a memorable browsing experience.
           </p>
-          <SlideShow images={[`${BASE_PATH}/portfolio/navbar.png`]} />
-          <TypographyH3 className="my-4 mt-8">Projects</TypographyH3>
-
+          <TypographyH3 className="my-4 mt-8">Modern Tech Stack</TypographyH3>
           <p className="font-mono mb-2">
-            My top personal and freelance projects — no filler, all killer.
+            Built with TypeScript for type safety, Next.js 14 for optimal performance, and styled with Tailwind CSS and ShadCN UI components. The combination ensures fast load times, excellent SEO, and a beautiful, consistent design system throughout the site.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/projects.png`,
-              `${BASE_PATH}/portfolio/project.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 mt-8 text-center">
-            This site&apos;s not just a portfolio — it&apos;s a whole vibe.
+          <TypographyH3 className="my-4 mt-8">Experience Timeline</TypographyH3>
+          <p className="font-mono mb-2">
+            Features a comprehensive work experience timeline, skills showcase, and detailed project breakdowns. The portfolio effectively communicates technical expertise while maintaining an engaging, personality-driven presentation that stands out from typical developer portfolios.
           </p>
         </div>
       );

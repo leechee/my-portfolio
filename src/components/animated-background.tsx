@@ -69,7 +69,7 @@ const STATES = {
   projects: {
     desktop: {
       scale: { x: 0.3, y: 0.3, z: 0.3 },
-      position: { x: 0, y: -40, z: 0 },
+      position: { x: 0, y: -350, z: 0 },
       rotation: {
         x: Math.PI,
         y: Math.PI / 3,
@@ -78,7 +78,7 @@ const STATES = {
     },
     mobile: {
       scale: { x: 0.18, y: 0.18, z: 0.18 },
-      position: { x: 0, y: 150, z: 0 },
+      position: { x: 0, y: -200, z: 0 },
       rotation: {
         x: Math.PI,
         y: Math.PI / 3,
@@ -370,23 +370,23 @@ const AnimatedBackground = () => {
     });
     gsap.timeline({
       scrollTrigger: {
-        trigger: "#skills",
+        trigger: "#experience",
         start: "top 50%",
         end: "bottom bottom",
         scrub: true,
         // markers: true,
         onEnter: () => {
-          setActiveSection("skills");
+          setActiveSection("about");
           gsap.to(kbd.scale, {
-            ...keyboardStates("skills").scale,
+            ...keyboardStates("about").scale,
             duration: 1,
           });
           gsap.to(kbd.position, {
-            ...keyboardStates("skills").position,
+            ...keyboardStates("about").position,
             duration: 1,
           });
           gsap.to(kbd.rotation, {
-            ...keyboardStates("skills").rotation,
+            ...keyboardStates("about").rotation,
             duration: 1,
           });
         },
@@ -428,17 +428,17 @@ const AnimatedBackground = () => {
           });
         },
         onLeaveBack: () => {
-          setActiveSection("skills");
+          setActiveSection("about");
           gsap.to(kbd.scale, {
-            ...keyboardStates("skills").scale,
+            ...keyboardStates("about").scale,
             duration: 1,
           });
           gsap.to(kbd.position, {
-            ...keyboardStates("skills").position,
+            ...keyboardStates("about").position,
             duration: 1,
           });
           gsap.to(kbd.rotation, {
-            ...keyboardStates("skills").rotation,
+            ...keyboardStates("about").rotation,
             duration: 1,
           });
           // gsap.to(kbd.rotation, { x: 0, duration: 1 });
