@@ -34,56 +34,41 @@ const HeroSection = () => {
                 <BlurIn delay={0.7}>
                   <p
                     className={cn(
-                      "md:self-start mt-4 font-thin text-md text-slate-500 dark:text-zinc-400 ml-3",
-                      "cursor-default font-display sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "md:self-start font-thin text-sm ml-3 text-left mb-2",
+                      "cursor-default font-display sm:text-base md:text-lg",
+                      "text-[#BF5700]"
                     )}
                   >
-                    Hi, I am
-                    <br className="md:hidden" />
+                    Hi, my name is
                   </p>
                 </BlurIn>
-                <BlurIn delay={1}>
-                  <Tooltip delayDuration={300}>
-                    <TooltipTrigger asChild>
-                      <h1
-                        className={cn(
-                          "font-thin text-6xl text-transparent text-slate-800 ml-1 text-left",
-                          "cursor-default text-edge-outline font-display sm:text-7xl md:text-9xl "
-                        )}
-                      >
-                        {config.author.split(" ")[0]}
-                        <br className="md:block hiidden" />
-                        {config.author.split(" ")[1]}
-                        {/* PLEASE hello??
-
-                        <br className="md:block hiidden" />
-                        UNMUTE ME 😢😢 */}
-                      </h1>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      side="top"
-                      className="dark:bg-white dark:text-black"
-                    >
-                      theres something waiting for you in devtools
-                    </TooltipContent>
-                  </Tooltip>
-                </BlurIn>
-                {/* <div className="md:block hidden bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 w-screen h-px animate-fade-right animate-glow" /> */}
-                <BlurIn delay={1.2}>
-                  <p
+                <BlurIn delay={0.9}>
+                  <h1
                     className={cn(
-                      "md:self-start md:mt-4 font-thin text-md text-slate-500 dark:text-zinc-400 ml-3",
-                      "cursor-default font-display sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "font-thin text-5xl text-transparent text-slate-800 ml-1 text-left",
+                      "cursor-default text-edge-outline font-display sm:text-6xl md:text-7xl mb-4"
                     )}
                   >
-                    A Full Stack Web Developer
+                    Jason Lee.
+                  </h1>
+                </BlurIn>
+                <BlurIn delay={1.1}>
+                  <p
+                    className={cn(
+                      "md:self-start text-sm ml-3 text-left",
+                      "cursor-default sm:text-base md:text-lg max-w-2xl",
+                      "text-slate-800 dark:text-white font-[200]",
+                      "font-[family-name:var(--font-inter)]"
+                    )}
+                  >
+                    I'm a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in turning AI ideas into features people actually use and enjoy.
                   </p>
                 </BlurIn>
               </div>
               <div className="mt-8 md:ml-2 flex flex-col gap-3">
                 <Link
                   href={
-                    "https://drive.google.com/file/d/1O97WCk2DrO9x6SHOqf7LvRbmHkMgGIb4/view?usp=sharing"
+                    "https://drive.google.com/file/d/19l0SXj0w0MuHiIw6XOhs1wW43cKRtjVC/view?usp=sharing"
                   }
                   target="_blank"
                   className="flex-1"

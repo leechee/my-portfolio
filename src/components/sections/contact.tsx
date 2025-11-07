@@ -14,23 +14,23 @@ import { cn } from "@/lib/utils";
 import { config } from "@/data/config";
 const ContactSection = () => {
   return (
-    <section id="contact" className="min-h-screen max-w-7xl mx-auto ">
-      <Link href={"#contact"}>
-        <h2
-          className={cn(
-            "bg-clip-text text-4xl text-center text-transparent md:text-7xl pt-16",
-            "bg-gradient-to-b from-black/80 to-black/50",
-            "dark:bg-gradient-to-b dark:from-white/80 dark:to-white/20 dark:bg-opacity-50"
-          )}
-        >
+    <section id="contact" className="min-h-[80vh] w-full pb-20">
+      <h2
+        className={cn(
+          "bg-clip-text text-4xl text-center text-transparent md:text-7xl pt-16 mb-8 md:mb-12",
+          "bg-gradient-to-b from-black/80 to-black/50",
+          "dark:bg-gradient-to-b dark:from-white/80 dark:to-white/20 dark:bg-opacity-50"
+        )}
+      >
+        <Link href={"#contact"}>
           LET&apos;S WORK <br />
           TOGETHER
-        </h2>
-      </Link>
-      <div className="grid grid-cols-1 md:grid-cols-2 z-[9999]">
-        <Card className="min-w-7xl bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl mt-10 md:mt-20">
+        </Link>
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 px-6 md:pl-24 lg:pl-40 xl:pl-48">
+        <Card className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl max-w-lg">
           <CardHeader>
-            <CardTitle className="text-4xl">Contact Form</CardTitle>
+            <CardTitle className="text-2xl md:text-3xl">Contact Form</CardTitle>
             <CardDescription>
               Please contact me directly at{" "}
               <a

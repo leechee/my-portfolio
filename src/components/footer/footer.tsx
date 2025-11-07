@@ -8,26 +8,14 @@ import { config } from "@/data/config";
 function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="flex w-full shrink-0 flex-col items-center gap-2 border-t border-border px-4 py-6 sm:flex-row md:px-6 sm:justify-between">
-      <p className="text-xs text-gray-500 dark:text-gray-400">
+    <footer className="flex w-full shrink-0 flex-col sm:flex-row items-center justify-between gap-4 border-t border-border px-4 py-6 md:px-6 relative z-50 bg-white dark:bg-black">
+      <p className="text-xs text-gray-500 dark:text-gray-400 order-2 sm:order-1">
         © {year} {config.author}. All rights reserved.
       </p>
-      <SocialMediaButtons />
-      <nav className="flex gap-4 sm:gap-6 z-10">
-        {footer.map((link, index) => {
-          const { title, href } = link;
-
-          return (
-            <Link
-              className="text-xs underline-offset-4 hover:underline"
-              href={href}
-              key={`l_${index}`}
-            >
-              <Button variant={"link"}>{title}</Button>
-            </Link>
-          );
-        })}
-      </nav>
+      <div className="order-1 sm:order-2 mx-auto sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2">
+        <SocialMediaButtons />
+      </div>
+      <div className="hidden sm:block order-3"></div>
     </footer>
   );
 }

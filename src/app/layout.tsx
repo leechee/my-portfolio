@@ -10,10 +10,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/footer/footer";
 import Script from "next/script";
 import Preloader from "@/components/preloader";
-import EasterEggs from "@/components/easter-eggs";
 import { config } from "@/data/config";
-import SocketContextProvider from "@/contexts/socketio";
-import RemoteCursors from "@/components/realtime/remote-cursors";
 
 export const metadata: Metadata = {
   title: config.title,
@@ -51,13 +48,19 @@ const archivoBlack = Archivo_Black({
   weight: "400",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["200", "400", "700"],
+  variable: "--font-inter",
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={[archivoBlack.className].join(" ")}>
+    <html lang="en" className={[archivoBlack.className, inter.variable].join(" ")}>
       <head>
         <Script
           defer
@@ -70,23 +73,18 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          disableTransitionOnChange
         >
           <Particles
             className="fixed inset-0 -z-10 animate-fade-in"
             quantity={100}
           />
           <Preloader>
-            <SocketContextProvider>
-              <RemoteCursors />
-              <TooltipProvider>
-                <Header />
-                {children}
-                <Footer />
-              </TooltipProvider>
-            </SocketContextProvider>
+            <TooltipProvider>
+              <Header />
+              {children}
+              <Footer />
+            </TooltipProvider>
             <Toaster />
-            <EasterEggs />
             <ElasticCursor />
           </Preloader>
         </ThemeProvider>
