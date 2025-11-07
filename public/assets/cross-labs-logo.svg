@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#1a2847"/>
+  <g transform="translate(100, 100)" stroke="#D4A574" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main hexagonal interlocking structure -->
+    <!-- Top section -->
+    <path d="M -20,-45 L 0,-55 L 20,-45"/>
+    <path d="M -20,-45 L -20,-15"/>
+    <path d="M 20,-45 L 20,-15"/>
+
+    <!-- Middle top cube -->
+    <path d="M -20,-15 L 0,-25 L 20,-15"/>
+    <path d="M 0,-55 L 0,-25"/>
+
+    <!-- Left and right sides -->
+    <path d="M -20,-15 L -40,0 L -20,15"/>
+    <path d="M 20,-15 L 40,0 L 20,15"/>
+
+    <!-- Center cube -->
+    <path d="M -20,-15 L -20,15"/>
+    <path d="M 20,-15 L 20,15"/>
+    <path d="M -20,15 L 0,25 L 20,15"/>
+    <path d="M 0,-25 L 0,25"/>
+
+    <!-- Bottom section -->
+    <path d="M -20,15 L -20,45"/>
+    <path d="M 20,15 L 20,45"/>
+    <path d="M -20,45 L 0,55 L 20,45"/>
+    <path d="M 0,25 L 0,55"/>
+
+    <!-- Diagonal connections -->
+    <path d="M -40,0 L -20,-15"/>
+    <path d="M -40,0 L -20,15"/>
+    <path d="M 40,0 L 20,-15"/>
+    <path d="M 40,0 L 20,15"/>
+  </g>
+</svg>
