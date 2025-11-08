@@ -265,7 +265,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            Twilight is an ambitious 2D platformer built in Unreal Engine 5, drawing heavy inspiration from Hollow Knight's atmospheric design and precise movement mechanics. This project showcases advanced game development techniques including custom character controllers, AI behavior systems, and dynamic combat mechanics.
+            Twilight is an ambitious 2D platformer built in Unreal Engine 5, drawing heavy inspiration from Hollow Knight&apos;s atmospheric design and precise movement mechanics. This project showcases advanced game development techniques including custom character controllers, AI behavior systems, and dynamic combat mechanics.
           </TypographyP>
           <ProjectsLinks repo={this.github} live={this.live} hideLive={true} />
           <TypographyH3 className="my-4 mt-8">Movement System</TypographyH3>
@@ -348,20 +348,20 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            This was my internship project in Kyoto at an AI research lab used to teach future interns and developers new to AI the basics of neural networks. It's an educational deep dive into machine learning fundamentals through a hand-coded neural network implementation. This tutorial builds a classification model from scratch without high-level ML libraries, providing clear insights into how neural networks actually work under the hood.
+            This was my internship project in Kyoto at an AI research lab used to teach future interns and developers new to AI the basics of neural networks. It&apos;s an educational deep dive into machine learning fundamentals through a hand-coded neural network implementation. This tutorial builds a classification model from scratch without high-level ML libraries, providing clear insights into how neural networks actually work under the hood.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} liveLabel="View Notebook" />
           <TypographyH3 className="my-4 mt-8">Hand-Coded Neural Network</TypographyH3>
           <p className="font-mono mb-2">
-            Rather than relying on TensorFlow or PyTorch, this project implements a neural network entirely from scratch using NumPy. You'll see exactly how forward propagation, backpropagation, gradient descent, and weight updates work at the mathematical level. This approach demystifies the "black box" of machine learning.
+            Rather than relying on TensorFlow or PyTorch, this project implements a neural network entirely from scratch using NumPy. You&apos;ll see exactly how forward propagation, backpropagation, gradient descent, and weight updates work at the mathematical level. This approach demystifies the &quot;black box&quot; of machine learning.
           </p>
-          <TypographyH3 className="my-4 mt-8">Fisher's Iris Dataset</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Fisher&apos;s Iris Dataset</TypographyH3>
           <p className="font-mono mb-2">
-            Using the classic Iris flower dataset, the tutorial demonstrates multi-class classification by predicting flower species based on sepal and petal measurements. The dataset is perfect for learning because it's small enough to understand completely but complex enough to require real machine learning techniques.
+            Using the classic Iris flower dataset, the tutorial demonstrates multi-class classification by predicting flower species based on sepal and petal measurements. The dataset is perfect for learning because it&apos;s small enough to understand completely but complex enough to require real machine learning techniques.
           </p>
           <TypographyH3 className="my-4 mt-8">Comprehensive Analysis</TypographyH3>
           <p className="font-mono mb-2">
-            The notebook includes detailed data exploration, visualization of decision boundaries, performance metrics, and analysis of model behavior. You'll learn about training/testing splits, accuracy metrics, confusion matrices, and how to interpret model predictions.
+            The notebook includes detailed data exploration, visualization of decision boundaries, performance metrics, and analysis of model behavior. You&apos;ll learn about training/testing splits, accuracy metrics, confusion matrices, and how to interpret model predictions.
           </p>
           <TypographyH3 className="my-4 mt-8">Educational Focus</TypographyH3>
           <p className="font-mono mb-2">
@@ -404,7 +404,7 @@ const projects: Project[] = [
           </p>
           <TypographyH3 className="my-4 mt-8">Smooth Scrolling & Animations</TypographyH3>
           <p className="font-mono mb-2">
-            Powered by Framer Motion and Aceternity UI, the site features buttery-smooth scroll animations, parallax effects, and micro-interactions throughout. Every section transition is carefully choreographed to guide the user's attention and create a memorable browsing experience.
+            Powered by Framer Motion and Aceternity UI, the site features buttery-smooth scroll animations, parallax effects, and micro-interactions throughout. Every section transition is carefully choreographed to guide the user&apos;s attention and create a memorable browsing experience.
           </p>
           <TypographyH3 className="my-4 mt-8">Modern Tech Stack</TypographyH3>
           <p className="font-mono mb-2">
