@@ -43,7 +43,10 @@ const Modall = ({ project }: { project: Project }) => {
       <Modal>
         <ModalTrigger className="bg-transparent flex flex-col group/modal-btn w-full">
           <div
-            className="relative w-full h-auto rounded-lg overflow-hidden"
+            className={cn(
+              "relative w-full h-auto rounded-lg overflow-hidden",
+              project.id === "my-portfolio" && "border border-white/30"
+            )}
             style={{ aspectRatio: "3/2" }}
           >
             <Image
