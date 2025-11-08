@@ -92,6 +92,7 @@ function ElasticCursor() {
     set.sx = gsap.quickSetter(jellyRef.current, "scaleX");
     set.sy = gsap.quickSetter(jellyRef.current, "scaleY");
     set.width = gsap.quickSetter(jellyRef.current, "width", "px");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Start Animation loop
@@ -112,6 +113,7 @@ function ElasticCursor() {
     } else {
       set.r(0);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHovering, isLoading]);
 
   const [cursorMoved, setCursorMoved] = useState(false);
@@ -178,6 +180,7 @@ function ElasticCursor() {
     return () => {
       if (!isLoading) window.removeEventListener("mousemove", setFromEvent);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   useEffect(() => {

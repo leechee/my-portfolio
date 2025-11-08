@@ -29,7 +29,7 @@ const ContactSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 px-6 md:pl-24 lg:pl-40 xl:pl-48">
         <Card className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl max-w-lg">
           <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl font-light">Let's Connect!</CardTitle>
+            <CardTitle className="text-2xl md:text-3xl font-light">Let&apos;s Connect!</CardTitle>
             <CardDescription>
               Please email me directly at{" "}
               <a
