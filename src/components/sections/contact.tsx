@@ -29,9 +29,9 @@ const ContactSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 px-6 md:pl-24 lg:pl-40 xl:pl-48">
         <Card className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl max-w-lg">
           <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl">Contact Form</CardTitle>
+            <CardTitle className="text-2xl md:text-3xl font-light">Let's Connect!</CardTitle>
             <CardDescription>
-              Please contact me directly at{" "}
+              Please email me directly at{" "}
               <a
                 target="_blank"
                 href={`mailto:${config.email}`}

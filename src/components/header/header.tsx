@@ -47,7 +47,7 @@ const Header = ({ loader }: HeaderProps) => {
       </div> */}
       <div className={cn(styles.bar, "flex items-center justify-between")}>
         <div></div>
-        <FunnyThemeToggle className="w-6 h-6 mr-4" />
+        {/* <FunnyThemeToggle className="w-6 h-6 mr-4" /> */}
         <Button
           variant={"ghost"}
           onClick={() => setIsActive(!isActive)}

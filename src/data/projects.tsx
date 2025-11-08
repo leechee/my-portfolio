@@ -30,20 +30,22 @@ import {
 import { TbBrandFramerMotion } from "react-icons/tb";
 const BASE_PATH = "/assets/projects-screenshots";
 
-const ProjectsLinks = ({ live, repo, liveLabel, repoLabel }: { live: string; repo?: string; liveLabel?: string; repoLabel?: string }) => {
+const ProjectsLinks = ({ live, repo, liveLabel, repoLabel, hideLive }: { live: string; repo?: string; liveLabel?: string; repoLabel?: string; hideLive?: boolean }) => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-start gap-3 my-3 mb-8">
-      <Link
-        className="font-mono underline flex gap-2"
-        rel="noopener"
-        target="_new"
-        href={live}
-      >
-        <Button variant={"default"} size={"sm"}>
-          {liveLabel || "Visit Website"}
-          <ArrowUpRight className="ml-3 w-5 h-5" />
-        </Button>
-      </Link>
+      {!hideLive && (
+        <Link
+          className="font-mono underline flex gap-2"
+          rel="noopener"
+          target="_new"
+          href={live}
+        >
+          <Button variant={"default"} size={"sm"}>
+            {liveLabel || "Visit Website"}
+            <ArrowUpRight className="ml-3 w-5 h-5" />
+          </Button>
+        </Link>
+      )}
       {repo && (
         <Link
           className="font-mono underline flex gap-2"
@@ -249,7 +251,7 @@ export type Project = {
 const projects: Project[] = [
   {
     id: "twilight",
-    category: "2D Platformer Game",
+    category: "2D Platformer Video Game",
     title: "Twilight",
     src: "/assets/Beginning.png",
     screenshots: [],
@@ -265,7 +267,7 @@ const projects: Project[] = [
           <TypographyP className="font-mono ">
             Twilight is an ambitious 2D platformer built in Unreal Engine 5, drawing heavy inspiration from Hollow Knight's atmospheric design and precise movement mechanics. This project showcases advanced game development techniques including custom character controllers, AI behavior systems, and dynamic combat mechanics.
           </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
+          <ProjectsLinks repo={this.github} live={this.live} hideLive={true} />
           <TypographyH3 className="my-4 mt-8">Movement System</TypographyH3>
           <p className="font-mono mb-2">
             The character controller features smooth, responsive movement with advanced mechanics including double jumps, wall sliding, and dash abilities. Every input is carefully tuned to provide precise control and satisfying feedback, essential for challenging platforming sections.
@@ -333,7 +335,7 @@ const projects: Project[] = [
   {
     id: "iris-flower-classification",
     category: "Machine Learning Tutorial",
-    title: "Iris Flower Classification",
+    title: "Iris Flower Classifcation Tutorial",
     src: "/assets/iris tutorial.png",
     screenshots: [],
     skills: {
@@ -346,7 +348,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            An educational deep dive into machine learning fundamentals through a hand-coded neural network implementation. This tutorial builds a classification model from scratch without high-level ML libraries, providing clear insights into how neural networks actually work under the hood.
+            This was my internship project in Kyoto at an AI research lab used to teach future interns and developers new to AI the basics of neural networks. It's an educational deep dive into machine learning fundamentals through a hand-coded neural network implementation. This tutorial builds a classification model from scratch without high-level ML libraries, providing clear insights into how neural networks actually work under the hood.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} liveLabel="View Notebook" />
           <TypographyH3 className="my-4 mt-8">Hand-Coded Neural Network</TypographyH3>
@@ -395,7 +397,7 @@ const projects: Project[] = [
           <TypographyP className="font-mono ">
             A modern, interactive portfolio website built with Next.js 14 and cutting-edge web technologies. Features a stunning 3D robot companion that follows your cursor, smooth scrolling animations, and a comprehensive showcase of projects and experience.
           </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
+          <ProjectsLinks repo={this.github} live={this.live} hideLive={true} />
           <TypographyH3 className="my-4 mt-8">Interactive 3D Robot</TypographyH3>
           <p className="font-mono mb-2">
             The centerpiece of the portfolio is an interactive 3D robot model created with Spline and seamlessly integrated into the Next.js application. The robot dynamically follows your cursor movements, creating an engaging and playful user experience. This demonstrates advanced 3D web integration and real-time interaction handling.

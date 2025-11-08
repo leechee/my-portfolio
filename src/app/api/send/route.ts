@@ -8,7 +8,7 @@ const resend = new Resend(process.env.RESEND_API_KEY || "dummy_key_for_build");
 const Email = z.object({
   fullName: z.string().min(2, "Full name is invalid!"),
   email: z.string().email({ message: "Email is invalid!" }),
-  message: z.string().min(10, "Message is too short!"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 });
 export async function POST(req: Request) {
   try {
@@ -19,8 +19,13 @@ export async function POST(req: Request) {
       data: zodData,
       error: zodError,
     } = Email.safeParse(body);
-    if (!zodSuccess)
-      return Response.json({ error: zodError?.message }, { status: 400 });
+    if (!zodSuccess) {
+      const firstError = zodError?.errors[0];
+      const errorMessage = firstError
+        ? firstError.message
+        : "Validation failed";
+      return Response.json({ error: errorMessage }, { status: 400 });
+    }
 
     const { data: resendData, error: resendError } = await resend.emails.send({
       from: "Porfolio <onboarding@resend.dev>",

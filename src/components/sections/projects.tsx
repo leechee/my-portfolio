@@ -29,7 +29,7 @@ const ProjectsSection = () => {
         </Link>
       </h2>
       <div className="mb-96"></div>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 pb-12">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-2 pb-12">
         {projects.map((project, index) => (
           <Modall key={project.src} project={project} />
         ))}
@@ -39,27 +39,27 @@ const ProjectsSection = () => {
 };
 const Modall = ({ project }: { project: Project }) => {
   return (
-    <div className="flex items-center justify-center scale-110">
+    <div className="flex items-start justify-center">
       <Modal>
-        <ModalTrigger className="bg-transparent flex justify-center group/modal-btn">
+        <ModalTrigger className="bg-transparent flex flex-col group/modal-btn w-full">
           <div
-            className="relative w-[480px] h-auto rounded-lg overflow-hidden"
+            className="relative w-full h-auto rounded-lg overflow-hidden"
             style={{ aspectRatio: "3/2" }}
           >
             <Image
-              className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all"
+              className="w-full h-full hover:scale-[1.05] transition-all object-cover"
               src={project.src}
               alt={project.title}
               width={300}
               height={300}
             />
-            <div className="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none">
-              <div className="flex flex-col h-full items-start justify-end p-6">
-                <div className="text-lg text-left">{project.title}</div>
-                <div className="text-xs bg-white text-black rounded-lg w-fit px-2">
-                  {project.category}
-                </div>
-              </div>
+          </div>
+          <div className="flex flex-col items-start mt-3 px-2">
+            <div className="text-xl text-left text-black dark:text-white font-medium">
+              {project.title}
+            </div>
+            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              {project.category}
             </div>
           </div>
         </ModalTrigger>
@@ -69,16 +69,18 @@ const Modall = ({ project }: { project: Project }) => {
               <ProjectContents project={project} />
             </ModalContent>
           </SmoothScroll>
-          <ModalFooter className="gap-4">
+          {/* <ModalFooter className="gap-4">
             <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
               Cancel
             </button>
-            <Link href={project.live} target="_blank">
-              <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
-                Visit
-              </button>
-            </Link>
-          </ModalFooter>
+            {project.id !== "twilight" && project.id !== "my-portfolio" && (
+              <Link href={project.live} target="_blank">
+                <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
+                  Visit
+                </button>
+              </Link>
+            )}
+          </ModalFooter> */}
         </ModalBody>
       </Modal>
     </div>

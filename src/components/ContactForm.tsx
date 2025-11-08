@@ -50,11 +50,12 @@ const ContactForm = () => {
         clearTimeout(timer);
       }, 1000);
     } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Something went wrong! Please check the fields.";
       toast({
         title: "Error",
-        description: "Something went wrong! Please check the fields.",
+        description: errorMessage,
         className: cn(
-          "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
+          "fixed top-[450px] left-12 md:left-32 lg:left-48 xl:left-56 w-auto max-w-sm"
         ),
         variant: "destructive",
       });
@@ -90,7 +91,7 @@ const ContactForm = () => {
       <div className="grid w-full gap-1.5 mb-4">
         <Label htmlFor="content">Your Message</Label>
         <Textarea
-          placeholder="Tell me about about your project,"
+          placeholder="Feel free to say anything!"
           id="content"
           required
           value={message}
@@ -138,10 +139,5 @@ const LabelInputContainer = ({
 };
 
 const BottomGradient = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-brand to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent orange-400 to-transparent" />
-    </>
-  );
+  return null;
 };

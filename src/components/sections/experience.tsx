@@ -116,7 +116,7 @@ const ExperienceSection = () => {
                     <div className="flex-1 pt-1">
                       <h3
                         className={cn(
-                          "text-xl font-light text-slate-800 dark:text-white",
+                          "text-2xl font-light text-slate-800 dark:text-white",
                           "mb-1"
                         )}
                       >
@@ -124,7 +124,7 @@ const ExperienceSection = () => {
                       </h3>
                       <p
                         className={cn(
-                          "text-sm text-slate-600 dark:text-slate-400",
+                          "text-base text-slate-600 dark:text-slate-400",
                           "mb-1"
                         )}
                       >
@@ -132,7 +132,7 @@ const ExperienceSection = () => {
                       </p>
                       <div
                         className={cn(
-                          "flex flex-wrap gap-3 text-xs",
+                          "flex flex-wrap gap-3 text-sm",
                           "text-slate-500 dark:text-slate-500"
                         )}
                       >
