@@ -11,6 +11,7 @@ import Footer from "@/components/footer/footer";
 import Script from "next/script";
 import Preloader from "@/components/preloader";
 import { config } from "@/data/config";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: config.title,
@@ -67,7 +68,6 @@ export default function RootLayout({
           src={process.env.UMAMI_DOMAIN}
           data-website-id={process.env.UMAMI_SITE_ID}
         ></Script>
-        {/* <Analytics /> */}
       </head>
       <body>
         <ThemeProvider
@@ -88,6 +88,7 @@ export default function RootLayout({
             <ElasticCursor />
           </Preloader>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

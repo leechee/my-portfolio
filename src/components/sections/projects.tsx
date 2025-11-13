@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="max-w-7xl mx-auto pb-20 min-h-screen flex flex-col">
+    <section id="projects" className="max-w-7xl mx-auto pb-20 min-h-screen flex flex-col scroll-mt-24">
       <h2
         className={cn(
           "text-4xl text-center md:text-7xl pt-2",

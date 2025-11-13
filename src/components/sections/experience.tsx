@@ -41,7 +41,7 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className={cn("relative w-full min-h-screen py-12 md:py-10 pt-20 md:pt-20 -mb-32")}
+      className={cn("relative w-full min-h-screen py-12 md:py-10 pt-20 md:pt-20 -mb-32 scroll-mt-20")}
     >
       <div className="grid md:grid-cols-2">
         <div
