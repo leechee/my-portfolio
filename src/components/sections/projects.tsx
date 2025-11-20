@@ -20,7 +20,7 @@ const ProjectsSection = () => {
     <section id="projects" className="relative z-10 max-w-7xl mx-auto pb-20 min-h-screen flex flex-col scroll-mt-24">
       <h2
         className={cn(
-          "text-4xl text-center md:text-7xl pt-2",
+          "text-4xl text-center md:text-7xl pt-10",
           "text-black dark:text-white"
         )}
       >

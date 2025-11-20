@@ -562,14 +562,16 @@ const AnimatedBackground = () => {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <Spline
-          ref={splineContainer}
-          onLoad={(app: Application) => {
-            setSplineApp(app);
-            bypassLoading();
-          }}
-          scene="/assets/robotrob.spline"
-        />
+        <div className={activeSection === "about" ? "w-full h-full" : "pointer-events-none w-full h-full"}>
+          <Spline
+            ref={splineContainer}
+            onLoad={(app: Application) => {
+              setSplineApp(app);
+              bypassLoading();
+            }}
+            scene="/assets/realrobot.spline"
+          />
+        </div>
       </Suspense>
     </>
   );
