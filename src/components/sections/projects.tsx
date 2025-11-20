@@ -44,7 +44,7 @@ const Modall = ({ project }: { project: Project }) => {
         <ModalTrigger className="bg-transparent flex flex-col group/modal-btn w-full">
           <div
             className={cn(
-              "relative w-full h-auto rounded-lg overflow-hidden",
+              "relative w-full h-auto overflow-hidden",
               project.id === "my-portfolio" && "border border-white/30"
             )}
             style={{ aspectRatio: "3/2" }}
@@ -61,7 +61,7 @@ const Modall = ({ project }: { project: Project }) => {
             <div className="text-xl text-left text-black dark:text-white font-medium">
               {project.title}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1 font-[family-name:var(--font-inter)] font-normal">
               {project.category}
             </div>
           </div>

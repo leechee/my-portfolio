@@ -23,9 +23,7 @@ const Header = ({ loader }: HeaderProps) => {
         "transition-colors delay-100 duration-500 ease-in"
       )}
       style={{
-        background: isActive ? "hsl(var(--background) / .8)" : "transparent",
-        // backgroundImage:
-        //   "linear-gradient(0deg, rgba(0, 0, 0, 0), rgb(0, 0, 0))",
+        background: "transparent",
       }}
       initial={{
         y: -80,
@@ -34,55 +32,26 @@ const Header = ({ loader }: HeaderProps) => {
         y: 0,
       }}
       transition={{
-        delay: loader ? 3.5 : 0, // 3.5 for loading, .5 can be added for delay
+        delay: loader ? 3.5 : 0,
         duration: 0.8,
       }}
     >
-      {/* <div
-        className="absolute inset-0 "
-        style={{
-          mask: "linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 12.5%)",
-        }}
-      >
-      </div> */}
-      <div className={cn(styles.bar, "flex items-center justify-between")}>
-        <div></div>
-        {/* <FunnyThemeToggle className="w-6 h-6 mr-4" /> */}
-        <Button
-          variant={"ghost"}
-          onClick={() => setIsActive(!isActive)}
-          className={cn(
-            styles.el,
-            "m-0 p-0 h-6 bg-transparent flex items-center justify-center"
-          )}
-        >
-          <div className="relative flex items-center">
-            <motion.p
-              variants={opacity}
-              animate={!isActive ? "open" : "closed"}
-            >
-              Menu
-            </motion.p>
-            <motion.p variants={opacity} animate={isActive ? "open" : "closed"}>
-              Close
-            </motion.p>
-          </div>
-          <div
-            className={`${styles.burger} ${
-              isActive ? styles.burgerActive : ""
-            }`}
-          ></div>
-        </Button>
+      <div className="flex items-center justify-center w-full">
+        <nav className="flex items-center gap-12 text-sm font-light font-[family-name:var(--font-inter)]">
+          <Link href="/#about" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+            About
+          </Link>
+          <Link href="/#experience" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+            Experience
+          </Link>
+          <Link href="/#projects" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+            Projects
+          </Link>
+          <Link href="/#contact" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+            Contact
+          </Link>
+        </nav>
       </div>
-      <motion.div
-        variants={background}
-        initial="initial"
-        animate={isActive ? "open" : "closed"}
-        className={styles.background}
-      ></motion.div>
-      <AnimatePresence mode="wait">
-        {isActive && <Nav setIsActive={setIsActive} />}
-      </AnimatePresence>
     </motion.header>
   );
 };

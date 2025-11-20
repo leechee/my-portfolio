@@ -15,6 +15,13 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    company: "Amazon",
+    logo: "/assets/amazon_logo.jpg",
+    role: "Guides Program",
+    location: "Remote",
+    period: "September 2025 - May 2026",
+  },
+  {
     company: "Samsung",
     logo: "/assets/samsung-logo.png",
     role: "Software Engineering Intern | Platform Engineering",
@@ -125,7 +132,7 @@ const ExperienceSection = () => {
                       <p
                         className={cn(
                           "text-base text-slate-600 dark:text-slate-400",
-                          "mb-1"
+                          "mb-1 font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
                         {exp.role}
@@ -133,7 +140,8 @@ const ExperienceSection = () => {
                       <div
                         className={cn(
                           "flex flex-wrap gap-3 text-sm",
-                          "text-slate-500 dark:text-slate-500"
+                          "text-slate-600 dark:text-slate-400",
+                          "font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
                         <span>{exp.location}</span>
@@ -148,8 +156,44 @@ const ExperienceSection = () => {
           </div>
         </div>
 
-        {/* Right Column - Empty for keyboard */}
-        <div className="hidden md:block col-span-1"></div>
+        {/* Right Column - Hobbies Section */}
+        <div className="hidden md:block col-span-1 px-6 md:px-32 lg:px-48 xl:px-56">
+          <BlurIn delay={0.2}>
+            <h2
+              className={cn(
+                "text-4xl md:text-5xl font-thin text-slate-800 dark:text-white mb-16",
+                "cursor-default"
+              )}
+            >
+              Hobbies
+            </h2>
+          </BlurIn>
+
+          {/* Hobbies List */}
+          <ul className="space-y-2 list-disc list-inside">
+            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+              guitar
+            </li>
+            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+              marathons
+            </li>
+            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+              volleyball
+            </li>
+            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+              cook (eat)
+            </li>
+            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+              photography
+            </li>
+            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+              video games
+            </li>
+            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+              video editing
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   );
