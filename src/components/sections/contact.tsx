@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { config } from "@/data/config";
 const ContactSection = () => {
   return (
-    <section id="contact" className="min-h-[80vh] w-full pb-20">
+    <section id="contact" className="relative z-10 min-h-[80vh] w-full pb-20">
       <h2
         className={cn(
           "text-4xl text-center md:text-7xl pt-16 mb-8 md:mb-12",
