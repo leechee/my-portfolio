@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import FunnyThemeToggle from "../theme/funny-theme-toggle";
 import { Button } from "../ui/button";
 import { config } from "@/data/config";
+import { useAudio } from "@/contexts/audio-context";
 
 interface HeaderProps {
   loader?: boolean;
@@ -16,6 +17,8 @@ interface HeaderProps {
 
 const Header = ({ loader }: HeaderProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const { playPianoNote } = useAudio();
+
   return (
     <motion.header
       className={cn(
@@ -38,16 +41,32 @@ const Header = ({ loader }: HeaderProps) => {
     >
       <div className="flex items-center justify-center w-full">
         <nav className="flex items-center gap-12 text-sm font-light font-[family-name:var(--font-inter)]">
-          <Link href="/#about" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+          <Link
+            href="/#about"
+            className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+            onMouseEnter={() => playPianoNote("C4")}
+          >
             About
           </Link>
-          <Link href="/#experience" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+          <Link
+            href="/#experience"
+            className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+            onMouseEnter={() => playPianoNote("D4")}
+          >
             Experience
           </Link>
-          <Link href="/#projects" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+          <Link
+            href="/#projects"
+            className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+            onMouseEnter={() => playPianoNote("E4")}
+          >
             Projects
           </Link>
-          <Link href="/#contact" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+          <Link
+            href="/#contact"
+            className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+            onMouseEnter={() => playPianoNote("F4")}
+          >
             Contact
           </Link>
         </nav>

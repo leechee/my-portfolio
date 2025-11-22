@@ -14,10 +14,17 @@ import Link from "next/link";
 import SmoothScroll from "../smooth-scroll";
 import projects, { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
+import { useAudio } from "@/contexts/audio-context";
 
 const ProjectsSection = () => {
+  const { playPianoNote } = useAudio();
+
+  // Array of notes for each project (cycling through pleasant notes)
+  const projectNotes: ("C4" | "D4" | "E4" | "G4" | "A4" | "B4" | "C5" | "D5")[] =
+    ["C4", "D4", "E4", "G4", "A4", "B4", "C5", "D5"];
+
   return (
-    <section id="projects" className="relative z-10 max-w-7xl mx-auto pb-20 min-h-screen flex flex-col scroll-mt-24">
+    <section id="projects" className="relative z-[5] max-w-7xl mx-auto pb-20 min-h-screen flex flex-col scroll-mt-24">
       <h2
         className={cn(
           "text-4xl text-center md:text-7xl pt-10",
@@ -31,15 +38,28 @@ const ProjectsSection = () => {
       <div className="mb-96"></div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-2 pb-12">
         {projects.map((project, index) => (
-          <Modall key={project.src} project={project} />
+          <Modall
+            key={project.src}
+            project={project}
+            note={projectNotes[index % projectNotes.length]}
+            onHover={playPianoNote}
+          />
         ))}
       </div>
     </section>
   );
 };
-const Modall = ({ project }: { project: Project }) => {
+const Modall = ({
+  project,
+  note,
+  onHover,
+}: {
+  project: Project;
+  note: "C4" | "D4" | "E4" | "G4" | "A4" | "B4" | "C5" | "D5";
+  onHover: (note: "C4" | "D4" | "E4" | "F4" | "G4" | "A4" | "B4" | "C5" | "D5" | "E5") => void;
+}) => {
   return (
-    <div className="flex items-start justify-center">
+    <div className="flex items-start justify-center" onMouseEnter={() => onHover(note)}>
       <Modal>
         <ModalTrigger className="bg-transparent flex flex-col group/modal-btn w-full">
           <div

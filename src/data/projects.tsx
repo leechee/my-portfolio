@@ -348,7 +348,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            This was my internship project in Kyoto at an AI research lab used to teach future interns and developers new to AI the basics of neural networks. It&apos;s an educational deep dive into machine learning fundamentals through a hand-coded neural network implementation. This tutorial builds a classification model from scratch without high-level ML libraries, providing clear insights into how neural networks actually work under the hood.
+            This was part of my internship project in Kyoto at an AI research lab used to teach future interns and developers new to AI the basics of neural networks. It&apos;s an educational deep dive into machine learning fundamentals through a hand-coded neural network implementation. This tutorial builds a classification model from scratch without high-level ML libraries, providing clear insights into how neural networks actually work under the hood.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} liveLabel="View Notebook" />
           <TypographyH3 className="my-4 mt-8">Hand-Coded Neural Network</TypographyH3>
@@ -395,24 +395,28 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            A modern, interactive portfolio website built with Next.js 14 and cutting-edge web technologies. Features a stunning 3D robot companion that follows your cursor, smooth scrolling animations, and a comprehensive showcase of projects and experience.
+            A modern, sonically-interactive portfolio website built with Next.js 14 and cutting-edge web technologies. Features a stunning 3D robot companion, generative audio system, smooth scrolling animations, and a comprehensive showcase of projects and experience.
           </TypographyP>
           <ProjectsLinks repo={this.github} live={this.live} hideLive={true} />
           <TypographyH3 className="my-4 mt-8">Interactive 3D Robot</TypographyH3>
           <p className="font-mono mb-2">
-            The centerpiece of the portfolio is an interactive 3D robot model created with Spline and seamlessly integrated into the Next.js application. The robot dynamically follows your cursor movements, creating an engaging and playful user experience. This demonstrates advanced 3D web integration and real-time interaction handling.
+            The centerpiece of the portfolio is an interactive 3D robot model created with Spline and seamlessly integrated into the Next.js application. The robot dynamically follows your cursor movements and performs unique animations in each section: spinning on the hero, interactive keyboard in skills, bongo cat animation in projects, and keycap rain in contact. This demonstrates advanced 3D web integration and real-time interaction handling.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Generative Lofi Audio System</TypographyH3>
+          <p className="font-mono mb-2">
+            Experience a fully generative lofi music system powered by the Web Audio API. Features a 75 BPM backing track with synthesized drums (kick, snare, hi-hat), bass line, and ambient pads following an Am - F - C - G chord progression. Your mouse controls a pentatonic melody that harmonizes with the chords, with pitch based on vertical position, stereo panning following horizontal movement, and distance-aware volume. Piano notes in the A minor pentatonic scale play on hover over buttons, navigation links, experience cards, and projects. All audio sources feed into a live circular visualizer, creating an immersive, interactive musical experience.
           </p>
           <TypographyH3 className="my-4 mt-8">Smooth Scrolling & Animations</TypographyH3>
           <p className="font-mono mb-2">
-            Powered by Framer Motion and Aceternity UI, the site features buttery-smooth scroll animations, parallax effects, and micro-interactions throughout. Every section transition is carefully choreographed to guide the user&apos;s attention and create a memorable browsing experience.
+            Powered by Framer Motion, GSAP, and Lenis smooth scrolling, the site features buttery-smooth scroll animations, parallax effects, and micro-interactions throughout. Every section transition is carefully choreographed with scroll-triggered GSAP timelines that manipulate the 3D robot&apos;s position, scale, and rotation to guide the user&apos;s attention and create a memorable browsing experience.
           </p>
           <TypographyH3 className="my-4 mt-8">Modern Tech Stack</TypographyH3>
           <p className="font-mono mb-2">
-            Built with TypeScript for type safety, Next.js 14 for optimal performance, and styled with Tailwind CSS and ShadCN UI components. The combination ensures fast load times, excellent SEO, and a beautiful, consistent design system throughout the site.
+            Built with TypeScript for type safety, Next.js 14 App Router for optimal performance and SEO, styled with Tailwind CSS and ShadCN UI components. Features Web Audio API for generative audio, Spline for 3D graphics, GSAP for scroll animations, and React Context for global state management. The combination ensures fast load times, excellent accessibility, and a beautiful, consistent design system throughout the site.
           </p>
-          <TypographyH3 className="my-4 mt-8">Experience Timeline</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Experience Timeline & Interactivity</TypographyH3>
           <p className="font-mono mb-2">
-            Features a comprehensive work experience timeline, skills showcase, and detailed project breakdowns. The portfolio effectively communicates technical expertise while maintaining an engaging, personality-driven presentation that stands out from typical developer portfolios.
+            Features a beautifully designed work experience timeline with company logos, interactive hover states that play musical notes, and a hobbies section. The portfolio effectively communicates technical expertise while maintaining an engaging, personality-driven presentation that stands out from typical developer portfolios through its unique combination of audio, 3D graphics, and smooth animations.
           </p>
         </div>
       );

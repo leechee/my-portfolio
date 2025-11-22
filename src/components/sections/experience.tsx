@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import Image from "next/image";
 import { BlurIn } from "../reveal-animations";
+import { useAudio } from "@/contexts/audio-context";
 
 interface ExperienceItem {
   company: string;
@@ -45,6 +46,11 @@ const experiences: ExperienceItem[] = [
 ];
 
 const ExperienceSection = () => {
+  const { playPianoNote } = useAudio();
+
+  // Map each experience to a different note
+  const experienceNotes: ("C5" | "D5" | "E5" | "G4")[] = ["C5", "D5", "E5", "G4"];
+
   return (
     <section
       id="experience"
@@ -94,8 +100,10 @@ const ExperienceSection = () => {
                           "border-2 border-[#BF5700]/30",
                           "transition-all duration-300",
                           "group-hover:border-[#BF5700] group-hover:scale-110",
-                          "shadow-lg"
+                          "shadow-lg",
+                          "cursor-pointer"
                         )}
+                        onMouseEnter={() => playPianoNote(experienceNotes[index])}
                       >
                         <Image
                           src={exp.logo}
@@ -172,7 +180,7 @@ const ExperienceSection = () => {
           {/* Hobbies List */}
           <ul className="space-y-2 list-disc list-inside">
             <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
-              guitar
+              guitar (i'm in a band)
             </li>
             <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
               marathons

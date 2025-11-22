@@ -14,11 +14,12 @@ import { cn } from "@/lib/utils";
 import { config } from "@/data/config";
 const ContactSection = () => {
   return (
-    <section id="contact" className="relative z-10 min-h-[80vh] w-full pb-20">
+    <section id="contact" className="relative min-h-[80vh] w-full pb-20">
       <h2
         className={cn(
           "text-4xl text-center md:text-7xl pt-16 mb-8 md:mb-12",
-          "text-black dark:text-white"
+          "text-black dark:text-white",
+          "relative z-[1]"
         )}
       >
         <Link href={"#contact"}>
@@ -27,7 +28,7 @@ const ContactSection = () => {
         </Link>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 px-6 md:pl-24 lg:pl-40 xl:pl-48">
-        <Card className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl max-w-lg">
+        <Card className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl max-w-lg relative z-[1]">
           <CardHeader>
             <CardTitle className="text-2xl md:text-3xl font-light">Let&apos;s Connect!</CardTitle>
             <CardDescription>

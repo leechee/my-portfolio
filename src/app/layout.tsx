@@ -12,6 +12,8 @@ import Script from "next/script";
 import Preloader from "@/components/preloader";
 import { config } from "@/data/config";
 import { Analytics } from "@vercel/analytics/react";
+import MusicToggle from "@/components/ui/music-toggle";
+import { AudioProvider } from "@/contexts/audio-context";
 
 export const metadata: Metadata = {
   title: config.title,
@@ -79,13 +81,16 @@ export default function RootLayout({
             quantity={100}
           />
           <Preloader>
-            <TooltipProvider>
-              <Header />
-              {children}
-              <Footer />
-            </TooltipProvider>
-            <Toaster />
-            <ElasticCursor />
+            <AudioProvider>
+              <TooltipProvider>
+                <Header />
+                {children}
+                <Footer />
+                <MusicToggle />
+              </TooltipProvider>
+              <Toaster />
+              <ElasticCursor />
+            </AudioProvider>
           </Preloader>
         </ThemeProvider>
         <Analytics />

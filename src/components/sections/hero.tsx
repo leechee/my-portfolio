@@ -8,9 +8,20 @@ import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
+import { useAudio } from "@/contexts/audio-context";
+import { useMouse } from "@/hooks/use-mouse";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
+  const { updateSound, playPianoNote } = useAudio();
+  const { x, y } = useMouse();
+
+  // Update sound based on mouse position
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      updateSound(x, y, window.innerWidth, window.innerHeight);
+    }
+  }, [x, y, updateSound]);
 
   return (
     <section id="hero" className={cn("relative w-full h-screen")}>
@@ -69,7 +80,10 @@ const HeroSection = () => {
                   className="flex-1"
                 >
                   <BoxReveal delay={2} width="100%" >
-                    <Button className="flex items-center gap-2 w-full">
+                    <Button
+                      className="flex items-center gap-2 w-full"
+                      onMouseEnter={() => playPianoNote("C4")}
+                    >
                       <File size={24} />
                       <p>Resume</p>
                     </Button>
@@ -79,7 +93,8 @@ const HeroSection = () => {
                   <Link href={"#contact"}>
                     <Button
                       variant={"outline"}
-                      className="block w-full overflow-hidden"
+                      className="block w-full overflow-hidden font-[family-name:var(--font-inter)] font-[200]"
+                      onMouseEnter={() => playPianoNote("E4")}
                     >
                       Hire Me
                     </Button>
@@ -88,7 +103,10 @@ const HeroSection = () => {
                     href={config.social.github}
                     target="_blank"
                   >
-                    <Button variant={"outline"}>
+                    <Button
+                      variant={"outline"}
+                      onMouseEnter={() => playPianoNote("G4")}
+                    >
                       <SiGithub size={24} />
                     </Button>
                   </Link>
@@ -96,7 +114,10 @@ const HeroSection = () => {
                     href={config.social.linkedin}
                     target="_blank"
                   >
-                    <Button variant={"outline"}>
+                    <Button
+                      variant={"outline"}
+                      onMouseEnter={() => playPianoNote("B4")}
+                    >
                       <SiLinkedin size={24} />
                     </Button>
                   </Link>
@@ -106,6 +127,11 @@ const HeroSection = () => {
           )}
         </div>
         <div className="grid col-span-1"></div>
+      </div>
+      <div className="absolute bottom-28 left-[50%] translate-x-[-50%] text-center px-4 max-w-md">
+        <p className="text-sm text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)]">
+          Bobby the robot here and I love music. Move your mouse and hover over different buttons to play along!
+        </p>
       </div>
       <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
         <ScrollDownIcon />
