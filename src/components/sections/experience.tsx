@@ -180,7 +180,7 @@ const ExperienceSection = () => {
           {/* Hobbies List */}
           <ul className="space-y-2 list-disc list-inside">
             <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
-              guitar (i'm in a band)
+              guitar (i&apos;m in a band)
             </li>
             <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
               marathons
