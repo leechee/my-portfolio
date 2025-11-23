@@ -12,6 +12,7 @@ import Script from "next/script";
 import Preloader from "@/components/preloader";
 import { config } from "@/data/config";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import MusicToggle from "@/components/ui/music-toggle";
 import { AudioProvider } from "@/contexts/audio-context";
 
@@ -94,6 +95,7 @@ export default function RootLayout({
           </Preloader>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
