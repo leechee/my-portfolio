@@ -140,7 +140,7 @@ const ExperienceSection = () => {
                       </h3>
                       <p
                         className={cn(
-                          "text-base md:text-base text-white md:text-slate-600 md:dark:text-slate-400",
+                          "text-base md:text-base text-white",
                           "mb-2 font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
@@ -148,8 +148,8 @@ const ExperienceSection = () => {
                       </p>
                       <div
                         className={cn(
-                          "flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-3 text-sm md:text-sm",
-                          "text-white md:text-slate-600 md:dark:text-slate-400",
+                          "flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-3 text-sm md:text-base",
+                          "text-white",
                           "font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
@@ -180,25 +180,25 @@ const ExperienceSection = () => {
 
           {/* Hobbies List */}
           <ul className="space-y-2 list-disc list-inside">
-            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+            <li className="text-base text-white font-[family-name:var(--font-inter)] font-normal">
               guitar (i&apos;m in a band)
             </li>
-            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+            <li className="text-base text-white font-[family-name:var(--font-inter)] font-normal">
               marathons
             </li>
-            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+            <li className="text-base text-white font-[family-name:var(--font-inter)] font-normal">
               volleyball
             </li>
-            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+            <li className="text-base text-white font-[family-name:var(--font-inter)] font-normal">
               cook (eat)
             </li>
-            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+            <li className="text-base text-white font-[family-name:var(--font-inter)] font-normal">
               photography
             </li>
-            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+            <li className="text-base text-white font-[family-name:var(--font-inter)] font-normal">
               video games
             </li>
-            <li className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
+            <li className="text-base text-white font-[family-name:var(--font-inter)] font-normal">
               video editing
             </li>
           </ul>

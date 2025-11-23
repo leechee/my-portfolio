@@ -67,15 +67,13 @@ const HeroSection = () => {
                       "font-[family-name:var(--font-inter)]"
                     )}
                   >
-                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in turning AI ideas into features people actually use and enjoy.
+                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in production ML and AI systems engineering.
                   </p>
                 </BlurIn>
               </div>
               <div className="mt-8 md:ml-2 flex flex-col gap-3">
                 <Link
-                  href={
-                    "https://drive.google.com/file/d/1UpQAAHh7dmylgbwA6zS_2sE0_Mo9xvaT/view?usp=sharing"
-                  }
+                  href="/assets/resume.pdf"
                   target="_blank"
                   className="flex-1"
                 >
@@ -93,7 +91,7 @@ const HeroSection = () => {
                   <Link href={"#contact"}>
                     <Button
                       variant={"outline"}
-                      className="block w-full overflow-hidden font-[family-name:var(--font-inter)] font-[200]"
+                      className="block w-full overflow-hidden font-[family-name:var(--font-inter)] font-bold"
                       onMouseEnter={() => playPianoNote("E4")}
                     >
                       Hire Me
@@ -129,7 +127,7 @@ const HeroSection = () => {
         <div className="grid col-span-1"></div>
       </div>
       <div className="hidden md:block absolute bottom-28 left-[50%] translate-x-[-50%] text-center px-4 max-w-md">
-        <p className="text-sm text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)]">
+        <p className="text-sm text-white font-[family-name:var(--font-inter)]">
           Bobby the robot here and I love music. Move your mouse and hover over different buttons to play along!
         </p>
       </div>

@@ -334,7 +334,7 @@ const projects: Project[] = [
   },
   {
     id: "iris-flower-classification",
-    category: "Machine Learning Tutorial",
+    category: "Teaching Devs New to AI",
     title: "Iris Flower Classifcation Tutorial",
     src: "/assets/iris tutorial.png",
     screenshots: [],

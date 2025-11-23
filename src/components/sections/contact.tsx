@@ -31,12 +31,12 @@ const ContactSection = () => {
         <Card className="bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl max-w-lg relative z-[1]">
           <CardHeader>
             <CardTitle className="text-2xl md:text-3xl font-light">Let&apos;s Connect!</CardTitle>
-            <CardDescription>
+            <CardDescription className="text-base text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)] font-normal">
               Please email me directly at{" "}
               <a
                 target="_blank"
                 href={`mailto:${config.email}`}
-                className="text-gray-200 cursor-can-hover rounded-lg"
+                className="text-slate-800 dark:text-slate-300 cursor-can-hover rounded-lg hover:underline"
               >
                 {config.email.replace(/@/g, "(at)")}
               </a>{" "}

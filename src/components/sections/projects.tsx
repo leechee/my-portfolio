@@ -82,7 +82,7 @@ const Modall = ({
             <div className="text-xl text-left text-black dark:text-white font-medium">
               {project.title}
             </div>
-            <div className="text-base md:text-sm text-white md:text-gray-600 md:dark:text-gray-400 mt-1 font-[family-name:var(--font-inter)] font-normal">
+            <div className="text-base md:text-base text-white mt-1 font-[family-name:var(--font-inter)] font-normal">
               {project.category}
             </div>
           </div>

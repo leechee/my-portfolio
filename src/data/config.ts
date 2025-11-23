@@ -1,19 +1,21 @@
 const config = {
-  title: "Jason Lee | Software Engineer",
+  title: "Jason Lee | Computational Engineering & Robotics Student",
   description: {
-    long: "Explore the portfolio of Jason Lee, a computational engineering honors and robotics student at UT Austin. Specializing in AI development, full-stack engineering, and turning innovative ideas into features people use and enjoy.",
+    long: "Explore the portfolio of Jason Lee, a computational engineering honors and robotics student at UT Austin interested in production ML and AI systems engineering. Building intelligent systems that solve real-world problems.",
     short:
-      "Portfolio of Jason Lee, a computational engineering and robotics student at UT Austin specializing in AI and full-stack development.",
+      "Portfolio of Jason Lee, a computational engineering honors and robotics student at UT Austin interested in production ML and AI systems engineering.",
   },
   keywords: [
     "Jason Lee",
     "portfolio",
-    "software engineer",
-    "AI developer",
     "computational engineering",
     "robotics",
     "UT Austin",
+    "production ML",
+    "AI systems engineering",
     "machine learning",
+    "ML engineering",
+    "AI infrastructure",
     "full-stack developer",
     "web development",
     "React",
@@ -23,7 +25,7 @@ const config = {
   ],
   author: "Jason Lee",
   email: "jasomslee@gmail.com",
-  site: "https://yoursite.com",
+  site: "https://jlee.app",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
