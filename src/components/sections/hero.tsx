@@ -10,6 +10,7 @@ import { SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
 import { useAudio } from "@/contexts/audio-context";
 import { useMouse } from "@/hooks/use-mouse";
+import { trackEvent } from "@/lib/analytics";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -76,6 +77,7 @@ const HeroSection = () => {
                   href="/assets/resume.pdf"
                   target="_blank"
                   className="flex-1"
+                  onClick={() => trackEvent("Resume Downloaded")}
                 >
                   <BoxReveal delay={2} width="100%" >
                     <Button
@@ -100,6 +102,7 @@ const HeroSection = () => {
                   <Link
                     href={config.social.github}
                     target="_blank"
+                    onClick={() => trackEvent("GitHub Clicked")}
                   >
                     <Button
                       variant={"outline"}
@@ -111,6 +114,7 @@ const HeroSection = () => {
                   <Link
                     href={config.social.linkedin}
                     target="_blank"
+                    onClick={() => trackEvent("LinkedIn Clicked")}
                   >
                     <Button
                       variant={"outline"}

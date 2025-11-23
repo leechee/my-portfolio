@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { track } from "@vercel/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 const sections = [
   { id: "hero", name: "Hero", threshold: 0.5 },
@@ -25,7 +25,7 @@ export const useScrollTracking = () => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && !trackedSections.current.has(section.id)) {
               // Track as virtual pageview
-              track("Section View", {
+              trackEvent("Section View", {
                 section: section.name,
                 path: `/#${section.id}`,
               });

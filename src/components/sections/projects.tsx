@@ -15,6 +15,7 @@ import SmoothScroll from "../smooth-scroll";
 import projects, { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 import { useAudio } from "@/contexts/audio-context";
+import { trackEvent } from "@/lib/analytics";
 
 const ProjectsSection = () => {
   const { playPianoNote } = useAudio();
@@ -61,7 +62,10 @@ const Modall = ({
   return (
     <div className="flex items-start justify-center" onMouseEnter={() => onHover(note)}>
       <Modal>
-        <ModalTrigger className="bg-transparent flex flex-col group/modal-btn w-full">
+        <ModalTrigger
+          className="bg-transparent flex flex-col group/modal-btn w-full"
+          onClick={() => trackEvent("Project Viewed", { project: project.title })}
+        >
           <div
             className={cn(
               "relative w-full h-auto overflow-hidden",

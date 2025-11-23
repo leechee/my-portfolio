@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { trackEvent } from "@/lib/analytics";
 
 const ContactForm = () => {
   const [fullName, setFullName] = React.useState("");
@@ -35,6 +36,10 @@ const ContactForm = () => {
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
+
+      // Track successful form submission
+      trackEvent("Contact Form Submitted", { success: true });
+
       toast({
         title: "Thank you!",
         description: "I'll get back to you as soon as possible.",
