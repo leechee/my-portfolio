@@ -60,12 +60,13 @@ const Modall = ({
   onHover: (note: "C4" | "D4" | "E4" | "F4" | "G4" | "A4" | "B4" | "C5" | "D5" | "E5") => void;
 }) => {
   return (
-    <div className="flex items-start justify-center" onMouseEnter={() => onHover(note)}>
+    <div
+      className="flex items-start justify-center"
+      onMouseEnter={() => onHover(note)}
+      onClick={() => trackEvent("Project Viewed", { project: project.title })}
+    >
       <Modal>
-        <ModalTrigger
-          className="bg-transparent flex flex-col group/modal-btn w-full"
-          onClick={() => trackEvent("Project Viewed", { project: project.title })}
-        >
+        <ModalTrigger className="bg-transparent flex flex-col group/modal-btn w-full">
           <div
             className={cn(
               "relative w-full h-auto overflow-hidden",
