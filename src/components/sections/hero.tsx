@@ -128,12 +128,12 @@ const HeroSection = () => {
         </div>
         <div className="grid col-span-1"></div>
       </div>
-      <div className="absolute bottom-28 left-[50%] translate-x-[-50%] text-center px-4 max-w-md">
+      <div className="hidden md:block absolute bottom-28 left-[50%] translate-x-[-50%] text-center px-4 max-w-md">
         <p className="text-sm text-slate-600 dark:text-slate-400 font-[family-name:var(--font-inter)]">
           Bobby the robot here and I love music. Move your mouse and hover over different buttons to play along!
         </p>
       </div>
-      <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
+      <div className="absolute bottom-10 md:bottom-10 left-[50%] translate-x-[-50%]">
         <ScrollDownIcon />
       </div>
     </section>

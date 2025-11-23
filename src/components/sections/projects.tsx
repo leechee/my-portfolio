@@ -35,7 +35,7 @@ const ProjectsSection = () => {
           Projects
         </Link>
       </h2>
-      <div className="mb-96"></div>
+      <div className="mb-12 md:mb-96"></div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-2 pb-12">
         {projects.map((project, index) => (
           <Modall

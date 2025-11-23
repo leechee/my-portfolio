@@ -4,6 +4,12 @@ import React, { useRef, useEffect, useState } from "react";
 import { useMousePosition } from "@/utils/mouse";
 import { cn } from "@/lib/utils";
 
+// Check if device is mobile
+const isMobileDevice = () => {
+  if (typeof window === "undefined") return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+};
+
 interface ParticlesProps {
   className?: string;
   quantity?: number;
@@ -27,6 +33,9 @@ export default function Particles({
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+
+  // Reduce particle count on mobile for better performance
+  const actualQuantity = isMobileDevice() ? Math.min(quantity, 30) : quantity;
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -148,7 +157,7 @@ export default function Particles({
 
   const drawParticles = () => {
     clearContext();
-    const particleCount = quantity;
+    const particleCount = actualQuantity;
     for (let i = 0; i < particleCount; i++) {
       const circle = circleParams();
       drawCircle(circle);

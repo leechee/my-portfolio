@@ -1,6 +1,12 @@
 "use client";
 import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 
+// Check if device is mobile
+const isMobileDevice = () => {
+  if (typeof window === "undefined") return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+};
+
 interface AudioContextType {
   updateSound: (x: number, y: number, screenWidth: number, screenHeight: number) => void;
   playPianoNote: (note: "C4" | "D4" | "E4" | "F4" | "G4" | "A4" | "B4" | "C5" | "D5" | "E5") => void;
@@ -43,6 +49,11 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   ];
 
   useEffect(() => {
+    // Don't initialize audio on mobile devices for performance
+    if (isMobileDevice()) {
+      return;
+    }
+
     // Initialize audio context on first user interaction
     const initAudio = () => {
       if (!audioContextRef.current) {

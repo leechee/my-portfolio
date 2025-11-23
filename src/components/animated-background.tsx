@@ -559,6 +559,17 @@ const AnimatedBackground = () => {
     };
     return { start, stop };
   };
+  // Don't render Spline on mobile for better performance
+  useEffect(() => {
+    if (isMobile && isLoading) {
+      bypassLoading();
+    }
+  }, [isMobile, isLoading, bypassLoading]);
+
+  if (isMobile) {
+    return null;
+  }
+
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>

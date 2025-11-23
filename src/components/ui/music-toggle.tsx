@@ -4,14 +4,22 @@ import { Music, VolumeX } from "lucide-react";
 import { useAudio } from "@/contexts/audio-context";
 import { cn } from "@/lib/utils";
 
+// Check if device is mobile
+const isMobileDevice = () => {
+  if (typeof window === "undefined") return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+};
+
 function MusicToggle() {
   const [mounted, setMounted] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
   const { isMuted, toggleMute, isInitialized, getFrequencyData } = useAudio();
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const animationRef = React.useRef<number>();
 
   React.useEffect(() => {
     setMounted(true);
+    setIsMobile(isMobileDevice());
   }, []);
 
   React.useEffect(() => {
@@ -83,8 +91,13 @@ function MusicToggle() {
     return null;
   }
 
+  // Don't render music toggle on mobile
+  if (isMobile) {
+    return null;
+  }
+
   return (
-    <div className="fixed top-10 right-12 z-[1000]">
+    <div className="hidden md:block fixed top-10 right-12 z-[1000]">
       <canvas
         ref={canvasRef}
         width={150}

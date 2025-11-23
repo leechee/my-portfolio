@@ -54,7 +54,7 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className={cn("relative w-full min-h-screen py-12 md:py-10 pt-20 md:pt-20 -mb-32 scroll-mt-20")}
+      className={cn("relative w-full min-h-screen py-12 md:py-10 pt-20 md:pt-20 mb-12 md:-mb-32 scroll-mt-20")}
     >
       <div className="grid md:grid-cols-2">
         <div
@@ -139,21 +139,21 @@ const ExperienceSection = () => {
                       </h3>
                       <p
                         className={cn(
-                          "text-base text-slate-600 dark:text-slate-400",
-                          "mb-1 font-[family-name:var(--font-inter)] font-normal"
+                          "text-sm md:text-base text-slate-600 dark:text-slate-400",
+                          "mb-2 font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
                         {exp.role}
                       </p>
                       <div
                         className={cn(
-                          "flex flex-wrap gap-3 text-sm",
+                          "flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-3 text-xs md:text-sm",
                           "text-slate-600 dark:text-slate-400",
                           "font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
                         <span>{exp.location}</span>
-                        <span className="text-[#BF5700]">•</span>
+                        <span className="hidden sm:inline text-[#BF5700]">•</span>
                         <span>{exp.period}</span>
                       </div>
                     </div>
