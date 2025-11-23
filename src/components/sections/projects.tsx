@@ -75,6 +75,7 @@ const Modall = ({
               alt={project.title}
               width={300}
               height={300}
+              loading="lazy"
             />
           </div>
           <div className="flex flex-col items-start mt-3 px-2">
