@@ -26,7 +26,7 @@ function MainPage() {
           {/* Mobile background - Static image */}
           <div className="md:hidden top-0 z-0 fixed w-full h-screen">
             <Image
-              src="/assets/mobilebackground.avif"
+              src="/assets/mobilebackgroundsky.jpg"
               alt="Mobile background"
               fill
               className="object-cover"

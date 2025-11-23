@@ -139,7 +139,7 @@ const ExperienceSection = () => {
                       </h3>
                       <p
                         className={cn(
-                          "text-sm md:text-base text-slate-600 dark:text-slate-400",
+                          "text-base md:text-base text-white md:text-slate-600 md:dark:text-slate-400",
                           "mb-2 font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
@@ -147,8 +147,8 @@ const ExperienceSection = () => {
                       </p>
                       <div
                         className={cn(
-                          "flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-3 text-xs md:text-sm",
-                          "text-slate-600 dark:text-slate-400",
+                          "flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-3 text-sm md:text-sm",
+                          "text-white md:text-slate-600 md:dark:text-slate-400",
                           "font-[family-name:var(--font-inter)] font-normal"
                         )}
                       >
