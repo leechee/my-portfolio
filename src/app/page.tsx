@@ -9,8 +9,12 @@ import ContactSection from "@/components/sections/contact";
 import HeroSection from "@/components/sections/hero";
 import ExperienceSection from "@/components/sections/experience";
 import Image from "next/image";
+import { useScrollTracking } from "@/hooks/use-scroll-tracking";
 
 function MainPage() {
+  // Track scroll depth as virtual pageviews
+  useScrollTracking();
+
   return (
     <>
       <SmoothScroll>
