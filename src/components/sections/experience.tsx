@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BlurIn } from "../reveal-animations";
 import { useAudio } from "@/contexts/audio-context";
 
@@ -12,6 +13,7 @@ interface ExperienceItem {
   role: string;
   location: string;
   period: string;
+  blogLink?: string;
 }
 
 const experiences: ExperienceItem[] = [
@@ -35,6 +37,7 @@ const experiences: ExperienceItem[] = [
     role: "AI Research Intern",
     location: "Kyoto, Japan",
     period: "June 2024 - October 2024",
+    blogLink: "https://www.crosslabs.org/blog/from-aristotle-to-genetic-algorithms-how-i-learned-neural-networks-in-one-summer",
   },
   {
     company: "Texas Robotics",
@@ -157,6 +160,21 @@ const ExperienceSection = () => {
                         <span className="hidden sm:inline text-[#BF5700]">•</span>
                         <span>{exp.period}</span>
                       </div>
+                      {exp.blogLink && (
+                        <Link
+                          href={exp.blogLink}
+                          target="_blank"
+                          className={cn(
+                            "inline-block mt-2 text-sm md:text-base",
+                            "text-[#f57b18] hover:text-[#ff8c2e]",
+                            "font-[family-name:var(--font-inter)] font-normal",
+                            "underline hover:no-underline",
+                            "transition-colors duration-200"
+                          )}
+                        >
+                          Read my blog →
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </BlurIn>
