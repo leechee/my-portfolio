@@ -9,6 +9,7 @@ import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
+import { useAudio } from "@/contexts/audio-context";
 
 const ContactForm = () => {
   const [fullName, setFullName] = React.useState("");
@@ -18,6 +19,7 @@ const ContactForm = () => {
 
   const { toast } = useToast();
   const router = useRouter();
+  const { playPianoNote } = useAudio();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -110,6 +112,7 @@ const ContactForm = () => {
         disabled={loading}
         className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
         type="submit"
+        onMouseEnter={() => playPianoNote("G4")}
       >
         {loading ? (
           <div className="flex items-center justify-center">

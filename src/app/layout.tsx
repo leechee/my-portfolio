@@ -53,12 +53,14 @@ export const metadata: Metadata = {
 const archivoBlack = Archivo_Black({
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["200", "400", "700"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 export default function RootLayout({

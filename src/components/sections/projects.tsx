@@ -78,9 +78,10 @@ const Modall = ({
               className="w-full h-full hover:scale-[1.05] transition-all object-cover"
               src={project.src}
               alt={project.title}
-              width={300}
-              height={300}
+              width={600}
+              height={400}
               loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="flex flex-col items-start mt-3 px-2">
