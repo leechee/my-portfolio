@@ -21,19 +21,22 @@ export const metadata: Metadata = {
   description: config.description.long,
   keywords: config.keywords,
   authors: [{ name: config.author }],
+  metadataBase: new URL(config.site),
   openGraph: {
     title: config.title,
     description: config.description.short,
     url: config.site,
+    siteName: "Jason Lee Portfolio",
     images: [
       {
         url: config.ogImg,
-        width: 800,
-        height: 600,
-        alt: "Portfolio preview",
+        width: 1144,
+        height: 714,
+        alt: "Jason Lee - Computational Engineering & Robotics Student Portfolio",
       },
     ],
     type: "website",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",

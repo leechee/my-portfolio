@@ -28,7 +28,7 @@ const config = {
   site: "https://jlee.app",
 
   get ogImg() {
-    return this.site + "/assets/seo/og-image.png";
+    return this.site + "/assets/myportfolio.png";
   },
   social: {
     twitter: "",
