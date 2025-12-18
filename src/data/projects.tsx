@@ -236,6 +236,12 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <span>UE5</span>,
   },
+  flask: {
+    title: "Flask",
+    bg: "black",
+    fg: "white",
+    icon: <SiPython />,
+  },
 };
 export type Project = {
   id: string;
@@ -292,6 +298,52 @@ const projects: Project[] = [
           <TypographyH3 className="my-4 mt-8">Technical Features</TypographyH3>
           <p className="font-mono mb-2">
             Built entirely in Unreal Engine 5, the project leverages Blueprint visual scripting for rapid prototyping and C++ for performance-critical systems. The game includes custom animation systems, collision handling, checkpoint systems, and a robust save/load mechanism.
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "strumsense",
+    category: "AI Song Recommendation System",
+    title: "StrumSense",
+    src: "/assets/strumsense.png",
+    screenshots: [],
+    skills: {
+      frontend: [PROJECT_SKILLS.next, PROJECT_SKILLS.react, PROJECT_SKILLS.ts],
+      backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.flask, PROJECT_SKILLS.docker],
+    },
+    live: "https://strumsense-dzjp7boao-jaye1ees-projects.vercel.app",
+    github: "https://github.com/leechee/StrumSense",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono">
+            StrumSense is an AI-powered acoustic guitar song recommendation system. Upload an acoustic cover you&apos;ve recorded, and the app analyzes the audio to recommend similar songs you might want to cover next. Built with Next.js 14 frontend and Python Flask backend, it processes audio using librosa for feature extraction and employs a hybrid similarity scoring system.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <div className="my-4">
+            <img
+              src="/assets/strumsense.png"
+              alt="StrumSense Application Screenshot"
+              className="w-full rounded-lg"
+            />
+          </div>
+          <TypographyH3 className="my-4 mt-8">Audio Analysis Pipeline</TypographyH3>
+          <p className="font-mono mb-2">
+            The system uses librosa to extract comprehensive audio features including tempo detection via beat tracking, key detection using the Krumhansl-Schmuckler algorithm, chroma features for pitch class distribution, RMS energy, and spectral centroid for brightness. Additionally, it generates a lightweight 512-dimensional embedding using MFCC (20 coefficients), spectral features (centroid, rolloff, contrast, bandwidth), chroma features, zero-crossing rate, and Tonnetz harmonic features.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Hybrid Similarity Matching</TypographyH3>
+          <p className="font-mono mb-2">
+            Recommendations are generated using a hybrid scoring system that combines embedding-based similarity (70% weight) with librosa features (30% weight). The embeddings use cosine similarity between 512-dimensional vectors, while the librosa features compare tempo, key/mode, energy, and brightness. The database contains 999 precomputed songs with full metadata, enabling fast real-time recommendations with scores boosted exponentially to 85-99% for realistic UI display.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Async Architecture & Memory Optimization</TypographyH3>
+          <p className="font-mono mb-2">
+            To handle Render&apos;s free tier 512MB RAM limit, the backend uses an async job processing architecture with background threading. The frontend polls job status every 5 seconds while the backend processes audio in stages: extracting duration from the full file, librosa features from the first 15 seconds, and embeddings from 30 seconds. This careful memory management allows processing 2-4 minute uploads without hitting resource limits, using only ~200MB total.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Production Deployment</TypographyH3>
+          <p className="font-mono mb-2">
+            The frontend is deployed on Vercel with Next.js 14 server-side rendering for API routes, while the Python Flask backend runs in a Docker container on Render&apos;s free tier. The system includes Last.fm API integration for metadata enrichment (album covers, preview URLs), supports MP3/WAV/M4A formats up to 4MB, and maintains a precomputed database of 999 songs with OpenL3 embeddings computed offline. The entire stack runs at $0/month on free tiers while delivering accurate recommendations in 2-4 minutes.
           </p>
         </div>
       );
