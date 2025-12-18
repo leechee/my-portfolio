@@ -251,7 +251,7 @@ export type Project = {
 const projects: Project[] = [
   {
     id: "twilight",
-    category: "2D Platformer Video Game",
+    category: "2D-3D Platformer Video Game",
     title: "Twilight",
     src: "/assets/Beginning.png",
     screenshots: [],
@@ -265,7 +265,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            Twilight is an ambitious 2D platformer built in Unreal Engine 5, drawing heavy inspiration from Hollow Knight&apos;s atmospheric design and precise movement mechanics. This project showcases advanced game development techniques including custom character controllers, AI behavior systems, and dynamic combat mechanics.
+            Twilight is an ambitious 2D-3D platformer built in Unreal Engine 5, drawing heavy inspiration from Hollow Knight&apos;s atmospheric design and precise movement mechanics. This project showcases advanced game development techniques including custom character controllers, AI behavior systems, and dynamic combat mechanics.
           </TypographyP>
           <ProjectsLinks repo={this.github} live={this.live} hideLive={true} />
           <TypographyH3 className="my-4 mt-8">Movement System</TypographyH3>

@@ -68,13 +68,13 @@ const HeroSection = () => {
                       "font-[family-name:var(--font-inter)]"
                     )}
                   >
-                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in production ML and platform engineering.
+                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in production ML, platform engineering, and 3D graphics.
                   </p>
                 </BlurIn>
               </div>
               <div className="mt-8 md:ml-2 flex flex-col gap-3">
                 <Link
-                  href="/assets/resume1.pdf"
+                  href="/assets/resume.pdf"
                   target="_blank"
                   className="flex-1"
                   onClick={() => trackEvent("Resume Downloaded")}
