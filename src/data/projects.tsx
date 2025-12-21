@@ -319,7 +319,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono">
-            StrumSense is an AI-powered acoustic guitar song recommendation system. Upload an acoustic cover you&apos;ve recorded, and the app analyzes the audio to recommend similar songs you might want to cover next. Built with Next.js 14 frontend and Python Flask backend, it processes audio using librosa for feature extraction and employs a hybrid similarity scoring system.
+            StrumSense is an AI-powered acoustic guitar song recommendation system. Upload an acoustic cover you&apos;ve recorded, and the app analyzes the audio to recommend similar songs you might want to cover next. Built with Next.js 14 frontend and Python Flask backend, it processes audio using librosa for feature extraction and OpenL3 for embedding generation, employing a hybrid similarity scoring system.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
           <div className="my-4">
@@ -331,11 +331,11 @@ const projects: Project[] = [
           </div>
           <TypographyH3 className="my-4 mt-8">Audio Analysis Pipeline</TypographyH3>
           <p className="font-mono mb-2">
-            The system uses librosa to extract comprehensive audio features including tempo detection via beat tracking, key detection using the Krumhansl-Schmuckler algorithm, chroma features for pitch class distribution, RMS energy, and spectral centroid for brightness. Additionally, it generates a lightweight 512-dimensional embedding using MFCC (20 coefficients), spectral features (centroid, rolloff, contrast, bandwidth), chroma features, zero-crossing rate, and Tonnetz harmonic features.
+            The system uses librosa to extract comprehensive audio features including tempo detection via beat tracking, key detection using the Krumhansl-Schmuckler algorithm, chroma features for pitch class distribution, RMS energy, and spectral centroid for brightness. Additionally, it uses OpenL3 to generate a lightweight 512-dimensional embedding: spectral features (centroid, rolloff, contrast, bandwidth), chroma features, zero-crossing rate, and Tonnetz harmonic features.
           </p>
           <TypographyH3 className="my-4 mt-8">Hybrid Similarity Matching</TypographyH3>
           <p className="font-mono mb-2">
-            Recommendations are generated using a hybrid scoring system that combines embedding-based similarity (70% weight) with librosa features (30% weight). The embeddings use cosine similarity between 512-dimensional vectors, while the librosa features compare tempo, key/mode, energy, and brightness. The database contains 999 precomputed songs with full metadata, enabling fast real-time recommendations with scores boosted exponentially to 85-99% for realistic UI display.
+            Recommendations are generated using a hybrid scoring system that combines embedding-based similarity (70% weight) with librosa features (30% weight). The embeddings use cosine similarity between 512-dimensional vectors, while the librosa features compare tempo, key/mode, energy, and brightness. The database contains 999 precomputed songs with full metadata, enabling fast real-time recommendations with scores for a realistic UI display.
           </p>
           <TypographyH3 className="my-4 mt-8">Async Architecture & Memory Optimization</TypographyH3>
           <p className="font-mono mb-2">
