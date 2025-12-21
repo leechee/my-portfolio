@@ -313,7 +313,7 @@ const projects: Project[] = [
       frontend: [PROJECT_SKILLS.next, PROJECT_SKILLS.react, PROJECT_SKILLS.ts],
       backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.flask, PROJECT_SKILLS.docker],
     },
-    live: "https://strumsense-dzjp7boao-jaye1ees-projects.vercel.app",
+    live: "strumsense.vercel.app",
     github: "https://github.com/leechee/StrumSense",
     get content() {
       return (
