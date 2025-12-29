@@ -21,7 +21,10 @@ const steps = [
 export default function Index() {
   const { isLoading, loadingPercent } = usePreloader();
   const [index, setIndex] = useState(0);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  const [dimension, setDimension] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1920,
+    height: typeof window !== 'undefined' ? window.innerHeight : 1080
+  });
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });

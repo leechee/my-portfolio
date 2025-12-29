@@ -91,10 +91,10 @@ function Page() {
                       <Image
                         src={image}
                         alt={`screenshot of "${project.name}`}
-                        className="w-[300px] h-[200px] rounded-md bg-zinc-900 "
+                        className="w-[300px] h-[200px] rounded-md bg-zinc-900"
                         width={300}
-                        height={400}
-                        style={{ height: "200px" }}
+                        height={200}
+                        style={{ objectFit: "cover" }}
                       />
                     </SplideSlide>
                   ))}

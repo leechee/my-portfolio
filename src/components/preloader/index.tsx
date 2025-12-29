@@ -16,11 +16,15 @@ type PreloaderContextType = {
   isLoading: boolean;
   loadingPercent: number;
   bypassLoading: () => void;
+  splineLoaded: boolean;
+  setSplineLoaded: (loaded: boolean) => void;
 };
 const INITIAL: PreloaderContextType = {
   isLoading: true,
   loadingPercent: 0,
   bypassLoading: () => {},
+  splineLoaded: false,
+  setSplineLoaded: () => {},
 };
 export const preloaderContext = createContext<PreloaderContextType>(INITIAL);
 
@@ -40,14 +44,19 @@ const LOADING_TIME = 1.67;
 function Preloader({ children, disabled = false }: PreloaderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingPercent, setLoadingPercent] = useState(0);
+  const [splineLoaded, setSplineLoaded] = useState(false);
   const loadingTween = useRef<gsap.core.Tween>();
+  const timerCompleted = useRef(false);
 
   const bypassLoading = () => {
-    loadingTween.current?.progress(0.99).kill();
-    setLoadingPercent(100);
-    setIsLoading(false);
-    // console.log("killed", loadingTween.current);
+    // Only finish loading if both timer and Spline are ready
+    if (timerCompleted.current && splineLoaded) {
+      loadingTween.current?.progress(0.99).kill();
+      setLoadingPercent(100);
+      setIsLoading(false);
+    }
   };
+
   const loadingPercentRef = useRef<{ value: number }>({ value: 0 });
   useEffect(() => {
     loadingTween.current = gsap.to(loadingPercentRef.current, {
@@ -58,16 +67,25 @@ function Preloader({ children, disabled = false }: PreloaderProps) {
         setLoadingPercent(loadingPercentRef.current.value);
       },
       onComplete: () => {
-        setIsLoading(false);
-        // observe: this change has not been observed for errors.
-        // window.scrollTo(0, 0);
+        timerCompleted.current = true;
+        // Only finish if Spline is also loaded
+        if (splineLoaded) {
+          setIsLoading(false);
+        }
       },
     });
-  }, []);
+  }, [splineLoaded]);
+
+  // Effect to check if we can finish loading when Spline loads
+  useEffect(() => {
+    if (splineLoaded && timerCompleted.current) {
+      setIsLoading(false);
+    }
+  }, [splineLoaded]);
 
   return (
     <preloaderContext.Provider
-      value={{ isLoading, bypassLoading, loadingPercent }}
+      value={{ isLoading, bypassLoading, loadingPercent, splineLoaded, setSplineLoaded }}
     >
       <AnimatePresence mode="wait">{isLoading && <Loader />}</AnimatePresence>
       {children}

@@ -111,7 +111,7 @@ const STATES = {
 type Section = "hero" | "about" | "skills" | "projects" | "contact";
 
 const AnimatedBackground = () => {
-  const { isLoading, bypassLoading } = usePreloader();
+  const { isLoading, bypassLoading, setSplineLoaded } = usePreloader();
   const { theme } = useTheme();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const splineContainer = useRef<HTMLDivElement>(null);
@@ -562,9 +562,10 @@ const AnimatedBackground = () => {
   // Don't render Spline on mobile for better performance
   useEffect(() => {
     if (isMobile && isLoading) {
+      setSplineLoaded(true); // Mark as loaded on mobile since we don't load Spline
       bypassLoading();
     }
-  }, [isMobile, isLoading, bypassLoading]);
+  }, [isMobile, isLoading, bypassLoading, setSplineLoaded]);
 
   if (isMobile) {
     return null;
@@ -572,12 +573,19 @@ const AnimatedBackground = () => {
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="w-full h-full flex items-center justify-center bg-transparent">
+            <div className="w-full h-screen" style={{ minHeight: '100vh' }} />
+          </div>
+        }
+      >
         <div className={activeSection === "about" ? "w-full h-full" : "pointer-events-none w-full h-full"}>
           <Spline
             ref={splineContainer}
             onLoad={(app: Application) => {
               setSplineApp(app);
+              setSplineLoaded(true);
               bypassLoading();
             }}
             scene="/assets/realrobot.spline"

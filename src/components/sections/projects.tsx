@@ -5,10 +5,8 @@ import {
   Modal,
   ModalBody,
   ModalContent,
-  ModalFooter,
   ModalTrigger,
 } from "../ui/animated-modal";
-import { FloatingDock } from "../ui/floating-dock";
 import Link from "next/link";
 
 import SmoothScroll from "../smooth-scroll";
@@ -44,6 +42,7 @@ const ProjectsSection = () => {
             project={project}
             note={projectNotes[index % projectNotes.length]}
             onHover={playPianoNote}
+            index={index}
           />
         ))}
       </div>
@@ -54,10 +53,12 @@ const Modall = ({
   project,
   note,
   onHover,
+  index,
 }: {
   project: Project;
   note: "C4" | "D4" | "E4" | "G4" | "A4" | "B4" | "C5" | "D5";
   onHover: (note: "C4" | "D4" | "E4" | "F4" | "G4" | "A4" | "B4" | "C5" | "D5" | "E5") => void;
+  index?: number;
 }) => {
   return (
     <div
@@ -80,7 +81,8 @@ const Modall = ({
               alt={project.title}
               width={600}
               height={400}
-              loading="lazy"
+              loading={(index ?? 0) < 4 ? "eager" : "lazy"}
+              priority={(index ?? 0) < 4}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>

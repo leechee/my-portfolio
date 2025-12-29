@@ -278,11 +278,12 @@ const projects: Project[] = [
           <p className="font-mono mb-2">
             The character controller features smooth, responsive movement with advanced mechanics including double jumps, wall sliding, and dash abilities. Every input is carefully tuned to provide precise control and satisfying feedback, essential for challenging platforming sections.
           </p>
-          <div className="my-4">
+          <div className="my-4 relative w-full" style={{ aspectRatio: '16/9' }}>
             <video
               controls
-              className="w-full rounded-lg"
+              className="w-full h-full rounded-lg"
               src="/assets/twilight_demo.mov"
+              style={{ objectFit: 'contain' }}
             >
               Your browser does not support the video tag.
             </video>
@@ -322,11 +323,14 @@ const projects: Project[] = [
             StrumSense is an AI-powered acoustic guitar song recommendation system. Upload an acoustic cover you&apos;ve recorded, and the app analyzes the audio to recommend similar songs you might want to cover next. Built with Next.js 14 frontend and Python Flask backend, it processes audio using librosa for feature extraction and OpenL3 for embedding generation, employing a hybrid similarity scoring system.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <div className="my-4">
-            <img
+          <div className="my-4 relative w-full" style={{ aspectRatio: '16/9' }}>
+            <Image
               src="/assets/strumsense.png"
               alt="StrumSense Application Screenshot"
               className="w-full rounded-lg"
+              width={1200}
+              height={675}
+              loading="lazy"
             />
           </div>
           <TypographyH3 className="my-4 mt-8">Audio Analysis Pipeline</TypographyH3>

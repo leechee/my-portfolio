@@ -9,7 +9,9 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
 import { ScrollArea } from "./scroll-area";
+import { useLenis } from "@/lib/lenis";
 
 interface ModalContextType {
   open: boolean;
@@ -69,6 +71,7 @@ export const ModalBody = ({
   className?: string;
 }) => {
   const { open } = useModal();
+  const lenis = useLenis();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -77,19 +80,38 @@ export const ModalBody = ({
       });
     }
   }, []);
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      // Stop Lenis smooth scroll when modal is open
+      if (lenis) {
+        lenis.stop();
+      }
     } else {
       document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+      // Resume Lenis smooth scroll when modal closes
+      if (lenis) {
+        lenis.start();
+      }
     }
-  }, [open]);
+  }, [open, lenis]);
 
   const modalRef = useRef(null);
   const { setOpen } = useModal();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useOutsideClick(modalRef, () => setOpen(false));
 
-  return (
+  if (!mounted) return null;
+
+  const modalContent = (
     <AnimatePresence>
       {open && (
         <motion.div
@@ -104,7 +126,8 @@ export const ModalBody = ({
             opacity: 0,
             backdropFilter: "blur(0px)",
           }}
-          className="modall fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full  flex items-center justify-center z-50"
+          className="modall fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full flex items-center justify-center z-50"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
         >
           <Overlay />
 
@@ -146,6 +169,8 @@ export const ModalBody = ({
       )}
     </AnimatePresence>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export const ModalContent = ({

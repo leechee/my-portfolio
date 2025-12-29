@@ -24,16 +24,18 @@ function MainPage() {
             <AnimatedBackground />
           </div>
           {/* Mobile background - Static image */}
-          <div className="md:hidden top-0 z-0 fixed w-full h-screen">
-            <Image
-              src="/assets/mobilebackgroundsky.jpg"
-              alt="Mobile background"
-              fill
-              className="object-cover"
-              priority
-              quality={75}
-              sizes="100vw"
-            />
+          <div className="md:hidden top-0 z-0 fixed w-full h-screen overflow-hidden">
+            <div className="relative w-full h-full">
+              <Image
+                src="/assets/mobilebackgroundsky.jpg"
+                alt="Mobile background"
+                fill
+                className="object-cover"
+                priority
+                quality={75}
+                sizes="100vw"
+              />
+            </div>
           </div>
           <HeroSection />
           <ExperienceSection />

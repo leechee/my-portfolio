@@ -115,7 +115,6 @@ const ExperienceSection = () => {
                           height={64}
                           className="w-full h-full object-cover"
                           loading="lazy"
-                          unoptimized
                         />
                       </div>
                       {/* Timeline Dot */}
