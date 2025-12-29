@@ -92,40 +92,29 @@ export const ModalBody = ({
 
   useEffect(() => {
     if (open) {
-      // Save current scroll position to ref
+      // Save scroll position when opening
       scrollPositionRef.current = window.scrollY;
 
-      // Prevent scrolling
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollPositionRef.current}px`;
-      document.body.style.width = "100%";
+      // Prevent background scrolling
       document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
+      document.body.style.paddingRight = "var(--scrollbar-width, 0px)";
 
-      // Stop Lenis smooth scroll when modal is open
+      // Stop Lenis
       if (lenis) {
         lenis.stop();
       }
     } else {
-      // Get saved scroll position from ref BEFORE restoring styles
-      const savedScrollPosition = scrollPositionRef.current;
-
-      // Restore body styles
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
+      // Restore background scrolling
       document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
+      document.body.style.paddingRight = "";
 
-      // Immediately restore scroll position
-      window.scrollTo({ top: savedScrollPosition, behavior: 'auto' });
+      // When closing, restore scroll and restart Lenis
+      const savedPosition = scrollPositionRef.current;
 
-      // Resume Lenis and force it to update its scroll position
       if (lenis) {
-        requestAnimationFrame(() => {
-          lenis.scrollTo(savedScrollPosition, { immediate: true });
-          lenis.start();
-        });
+        // Sync Lenis to the saved position before restarting
+        lenis.scrollTo(savedPosition, { immediate: true, force: true, lock: true });
+        lenis.start();
       }
     }
   }, [open, lenis]);
