@@ -112,7 +112,7 @@ export const ModalBody = ({
   if (!mounted) return null;
 
   const modalContent = (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {open && (
         <motion.div
           initial={{
@@ -125,6 +125,9 @@ export const ModalBody = ({
           exit={{
             opacity: 0,
             backdropFilter: "blur(0px)",
+          }}
+          transition={{
+            duration: 0.15,
           }}
           className="modall fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full flex items-center justify-center z-50"
           style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
@@ -151,13 +154,12 @@ export const ModalBody = ({
             }}
             exit={{
               opacity: 0,
-              scale: 0.8,
-              rotateX: 10,
+              scale: 0.95,
+              rotateX: 0,
             }}
             transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 15,
+              duration: 0.15,
+              ease: "easeOut",
             }}
           >
             <CloseIcon />
@@ -220,6 +222,9 @@ const Overlay = ({ className }: { className?: string }) => {
       exit={{
         opacity: 0,
         backdropFilter: "blur(0px)",
+      }}
+      transition={{
+        duration: 0.15,
       }}
       className={`modal-overlay fixed inset-0 h-full w-full bg-black bg-opacity-50 z-50 ${className}`}
       onClick={() => setOpen(false)}
