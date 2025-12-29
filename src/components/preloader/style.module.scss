@@ -7,14 +7,22 @@
   padding-inline: 60px;
   padding-bottom: 30px;
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 99;
+  overflow: hidden;
+  will-change: transform;
   // TODO: Add a better color instead of just the background to make it pop more
   background-color: hsl(var(--background));
   svg {
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     height: calc(100% + 300px);
+    min-height: calc(100vh + 300px);
+    pointer-events: none;
+    will-change: auto;
     path {
       fill: hsl(var(--background));
     }

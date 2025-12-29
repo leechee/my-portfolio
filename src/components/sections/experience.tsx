@@ -132,14 +132,14 @@ const ExperienceSection = () => {
 
                     {/* Content */}
                     <div className="flex-1 pt-1">
-                      <h3
+                      <div
                         className={cn(
                           "text-2xl font-light text-slate-800 dark:text-white",
                           "mb-1"
                         )}
                       >
                         {exp.company}
-                      </h3>
+                      </div>
                       <p
                         className={cn(
                           "text-base md:text-base text-white",

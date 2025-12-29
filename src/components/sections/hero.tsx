@@ -103,10 +103,12 @@ const HeroSection = () => {
                     href={config.social.github}
                     target="_blank"
                     onClick={() => trackEvent("GitHub Clicked")}
+                    aria-label="Visit GitHub profile"
                   >
                     <Button
                       variant={"outline"}
                       onMouseEnter={() => playPianoNote("G4")}
+                      aria-label="GitHub"
                     >
                       <SiGithub size={24} />
                     </Button>
@@ -115,10 +117,12 @@ const HeroSection = () => {
                     href={config.social.linkedin}
                     target="_blank"
                     onClick={() => trackEvent("LinkedIn Clicked")}
+                    aria-label="Visit LinkedIn profile"
                   >
                     <Button
                       variant={"outline"}
                       onMouseEnter={() => playPianoNote("B4")}
+                      aria-label="LinkedIn"
                     >
                       <SiLinkedin size={24} />
                     </Button>

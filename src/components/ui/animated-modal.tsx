@@ -70,37 +70,66 @@ export const ModalBody = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const { open } = useModal();
+  const { open, setOpen } = useModal();
   const lenis = useLenis();
+  const scrollPositionRef = useRef(0);
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+      }
+    };
+
     if (typeof window !== "undefined") {
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") setOpen(false);
-      });
+      document.addEventListener("keydown", handleKeyDown);
     }
-  }, []);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, setOpen]);
 
   useEffect(() => {
     if (open) {
+      // Save current scroll position to ref
+      scrollPositionRef.current = window.scrollY;
+
+      // Prevent scrolling
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollPositionRef.current}px`;
+      document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
+
       // Stop Lenis smooth scroll when modal is open
       if (lenis) {
         lenis.stop();
       }
     } else {
-      document.body.style.overflow = "auto";
-      document.documentElement.style.overflow = "auto";
-      // Resume Lenis smooth scroll when modal closes
+      // Get saved scroll position from ref BEFORE restoring styles
+      const savedScrollPosition = scrollPositionRef.current;
+
+      // Restore body styles
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+
+      // Immediately restore scroll position
+      window.scrollTo({ top: savedScrollPosition, behavior: 'auto' });
+
+      // Resume Lenis on next tick after scroll is set
       if (lenis) {
-        lenis.start();
+        setTimeout(() => {
+          lenis.start();
+        }, 10);
       }
     }
   }, [open, lenis]);
 
   const modalRef = useRef(null);
-  const { setOpen } = useModal();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

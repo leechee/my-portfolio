@@ -71,6 +71,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={[archivoBlack.className, inter.variable].join(" ")}>
       <head>
+        <link rel="preconnect" href="https://cloud.umami.is" />
+        <link rel="dns-prefetch" href="https://cloud.umami.is" />
         <Script
           defer
           src="https://cloud.umami.is/script.js"
