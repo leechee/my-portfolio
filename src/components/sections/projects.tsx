@@ -83,7 +83,8 @@ const Modall = ({
               height={400}
               loading={(index ?? 0) < 4 ? "eager" : "lazy"}
               priority={(index ?? 0) < 4}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 320px"
+              quality={75}
             />
           </div>
           <div className="flex flex-col items-start mt-3 px-2">

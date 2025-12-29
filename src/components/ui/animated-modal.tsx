@@ -120,11 +120,12 @@ export const ModalBody = ({
       // Immediately restore scroll position
       window.scrollTo({ top: savedScrollPosition, behavior: 'auto' });
 
-      // Resume Lenis on next tick after scroll is set
+      // Resume Lenis and force it to update its scroll position
       if (lenis) {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
+          lenis.scrollTo(savedScrollPosition, { immediate: true });
           lenis.start();
-        }, 10);
+        });
       }
     }
   }, [open, lenis]);
