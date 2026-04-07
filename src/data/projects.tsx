@@ -354,6 +354,54 @@ const projects: Project[] = [
     },
   },
   {
+    id: "robosuite-ga",
+    category: "Gradient-Free vs. Gradient-Based Robot Learning",
+    title: "Robotic Manipulation",
+    src: "/assets/env_lift.png",
+    screenshots: [],
+    skills: {
+      frontend: [],
+      backend: [PROJECT_SKILLS.python],
+    },
+    live: "https://github.com/leechee/robosuite_GA",
+    github: "https://github.com/leechee/robosuite_GA",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono">
+            A comparison of neuroevolution (Genetic Algorithm, CMA-ES) and reinforcement learning (SAC) for training a 7-DOF Franka Panda arm to perform a reach-grasp-lift task in MuJoCo/robosuite. The project evaluates whether gradient-free methods can solve a manipulation task known to be solvable by gradient-based RL, and quantifies the performance gap.
+          </TypographyP>
+          <ProjectsLinks repo={this.github} live={this.live} hideLive={true} />
+          <TypographyH3 className="my-4 mt-8">Task & Environment</TypographyH3>
+          <p className="font-mono mb-2">
+            The Franka Emika Panda arm must reach, grasp, and lift a cube above a target height in robosuite&apos;s Lift environment with MuJoCo physics. All methods share a 42-dimensional proprioception observation space (joint positions/velocities, end-effector pose, gripper state, cube position/orientation, gripper-to-cube vector) and a dense shaping reward (approach + grasp + lift).
+          </p>
+          <TypographyH3 className="my-4 mt-8">Methods</TypographyH3>
+          <p className="font-mono mb-2">
+            Three policy search methods were evaluated against the same environment configuration:
+          </p>
+          <p className="font-mono mb-2">
+            <strong>Genetic Algorithm (GA)</strong> — Population of 30 individuals, tournament selection (k=5), arithmetic crossover, and adaptive Gaussian mutation (σ: 0.1 → 0.005) with 2-elite elitism. Network: MLP 42 → [128, 128, 64] → 8 (~31k parameters).
+          </p>
+          <p className="font-mono mb-2">
+            <strong>CMA-ES</strong> — Uses the cma library (Hansen, 2016) with population 20, max 50 generations, initial σ=0.5, and the same ~31k-parameter network architecture.
+          </p>
+          <p className="font-mono mb-2">
+            <strong>Soft Actor-Critic (SAC)</strong> — stable-baselines3 implementation with MLP [256, 256] policy, 1M replay buffer, batch size 256, lr=3e-4, 500k timesteps. Matches the robosuite benchmark configuration.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Results</TypographyH3>
+          <p className="font-mono mb-2">
+            The GA improved from a mean reward of 0.31 (gen 0) to 10.42 (gen 39), peaking at a best individual score of 19.79. CMA-ES reached a mean evaluation reward of 4.33 across 3 trials (8.91, 0.18, 3.90) with high inter-trial variance indicating no consistent behavior. Neither gradient-free method achieved a successful lift. SAC (benchmark) reaches ~95% task success within 500 epochs.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Why Gradient-Free Methods Fail Here</TypographyH3>
+          <p className="font-mono mb-2">
+            CMA-ES is designed for smooth, low-dimensional optimization. Its covariance adaptation becomes statistically unreliable above ~a few hundred parameters — applying it to 31,000 weights with only 20 samples per generation provides insufficient signal to adapt the search distribution meaningfully. The GA faces the same curse of dimensionality: random mutation across 31k weights is too coarse to discover coordinated reach-grasp-lift behaviors. SAC uses backpropagation to compute exact gradients from every timestep, delivering orders of magnitude more directional information than fitness-only feedback. Neuroevolution is effective when either the policy is parameterized compactly (&lt;500 parameters) or methods designed for high dimensionality are used (e.g., OpenAI ES with antithetic sampling).
+          </p>
+        </div>
+      );
+    },
+  },
+  {
     id: "echoes-of-the-unknown",
     category: "UFO Sightings Analysis API",
     title: "Echoes of the Unknown",
@@ -391,7 +439,7 @@ const projects: Project[] = [
   {
     id: "iris-flower-classification",
     category: "Teaching Devs New to AI",
-    title: "Iris Flower Classifcation Tutorial",
+    title: "Introductory Neural Network Tutorial",
     src: "/assets/iris tutorial.png",
     screenshots: [],
     skills: {

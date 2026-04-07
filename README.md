@@ -17,11 +17,7 @@ Experience a fully generative music system powered by the Web Audio API:
 - Mute/unmute toggle for full control
 
 ### Interactive 3D Robot
-The centerpiece is an interactive 3D robot model created with Spline. The robot dynamically follows cursor movements and performs unique animations in different sections:
-- Spinning on the hero section
-- Interactive keyboard in the about/skills section
-- Bongo cat animation in the projects section
-- Keycap rain in the contact section
+The centerpiece is an interactive 3D robot model created with Spline. The robot dynamically follows cursor movements, creating an engaging and playful user experience with unique animations in each section.
 
 ### Smooth Scrolling & Animations
 Powered by Framer Motion and custom UI components, featuring:

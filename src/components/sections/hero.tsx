@@ -68,7 +68,7 @@ const HeroSection = () => {
                       "font-[family-name:var(--font-inter)]"
                     )}
                   >
-                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in production ML, platform engineering, and 3D graphics.
+                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in production ML, robot policy learning, and platform engineering.
                   </p>
                 </BlurIn>
               </div>
