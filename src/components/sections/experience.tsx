@@ -18,6 +18,13 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    company: "IBM",
+    logo: "/assets/ibm%20logo.png",
+    role: "Software Engineering Intern",
+    location: "Austin, TX",
+    period: "May 2026 - August 2026",
+  },
+  {
     company: "Amazon",
     logo: "/assets/amazon_logo.jpg",
     role: "Guides Program",
@@ -52,12 +59,12 @@ const ExperienceSection = () => {
   const { playPianoNote } = useAudio();
 
   // Map each experience to a different note
-  const experienceNotes: ("C5" | "D5" | "E5" | "G4")[] = ["C5", "D5", "E5", "G4"];
+  const experienceNotes: ("A4" | "C5" | "D5" | "E5" | "G4")[] = ["A4", "C5", "D5", "E5", "G4"];
 
   return (
     <section
       id="experience"
-      className={cn("relative w-full min-h-screen py-12 md:py-10 pt-20 md:pt-20 mb-12 md:-mb-32 scroll-mt-20")}
+      className={cn("relative w-full min-h-screen py-12 md:py-10 pt-6 md:pt-6 mb-12 md:-mb-32 scroll-mt-20")}
     >
       <div className="grid md:grid-cols-2">
         <div
@@ -71,7 +78,7 @@ const ExperienceSection = () => {
           <BlurIn delay={0.2}>
             <h2
               className={cn(
-                "text-4xl md:text-5xl font-thin text-slate-800 dark:text-white mb-16",
+                "text-4xl md:text-5xl font-thin text-slate-800 dark:text-white mb-10",
                 "cursor-default"
               )}
             >
@@ -90,7 +97,7 @@ const ExperienceSection = () => {
             />
 
             {/* Experience Items */}
-            <div className="space-y-12">
+            <div className="space-y-6">
               {experiences.map((exp, index) => (
                 <BlurIn key={index} delay={0.4 + index * 0.2}>
                   <div className="relative flex gap-6 items-start group">
@@ -187,7 +194,7 @@ const ExperienceSection = () => {
           <BlurIn delay={0.2}>
             <h2
               className={cn(
-                "text-4xl md:text-5xl font-thin text-slate-800 dark:text-white mb-16",
+                "text-4xl md:text-5xl font-thin text-slate-800 dark:text-white mb-10",
                 "cursor-default"
               )}
             >

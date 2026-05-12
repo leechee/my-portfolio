@@ -136,7 +136,7 @@ const HeroSection = () => {
       </div>
       <div className="hidden md:block absolute bottom-28 left-[50%] translate-x-[-50%] text-center px-4 max-w-md">
         <p className="text-sm text-white font-[family-name:var(--font-inter)]">
-          Bobby the robot here and I love music. Move your mouse and hover over different buttons to play along!
+          Bobby the robot here and I love music. Click the sound icon on the top right to enable a lofi sound-system. Move your mouse and hover over different buttons to play along!
         </p>
       </div>
       <div className="absolute bottom-10 md:bottom-10 left-[50%] translate-x-[-50%]">

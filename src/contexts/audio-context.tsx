@@ -38,7 +38,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const currentChordRef = useRef<number>(0);
 
   const [isInitialized, setIsInitialized] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   // Chord progression: Am - F - C - G
   const chordProgression = [
@@ -61,7 +61,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
         // Master gain for overall volume control
         masterGainRef.current = audioContextRef.current.createGain();
-        masterGainRef.current.gain.setValueAtTime(0.7, audioContextRef.current.currentTime);
+        masterGainRef.current.gain.setValueAtTime(0, audioContextRef.current.currentTime);
         masterGainRef.current.connect(audioContextRef.current.destination);
 
         // Create oscillator for mouse-controlled melody
