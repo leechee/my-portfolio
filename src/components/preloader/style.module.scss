@@ -1,3 +1,21 @@
+@keyframes l7-1 {
+  0%,
+  100%  {background-position: 0 -50px,100% -50px}
+  17.5% {background-position: 0 100%,100% -50px,0 -50px,100% -50px}
+  35%   {background-position: 0 100%,100% 100% ,0 -50px,100% -50px}
+  52.5% {background-position: 0 100%,100% 100% ,0 calc(100% - 16px),100% -50px}
+  70%,
+  98%  {background-position: 0 100%,100% 100% ,0 calc(100% - 16px),100% calc(100% - 16px)}
+}
+@keyframes l7-2 {
+  0%,70% {transform:translate(0)}
+  100%  {transform:translate(200%)}
+}
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .introduction {
   height: 100dvh;
   width: 100dvw;
@@ -9,7 +27,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 9999;
   overflow: hidden;
   will-change: transform;
   // TODO: Add a better color instead of just the background to make it pop more
@@ -27,12 +45,55 @@
       fill: hsl(var(--background));
     }
   }
-  p {
-    display: flex;
-    color: hsl(var(--foreground));
-    font-size: 72px;
-    align-items: center;
+  .loaderWrap {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 1;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    animation: ring-spin 1.6s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(245, 123, 24, 0.8));
+
+    circle {
+      fill: none;
+      stroke: #f57b18;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 70 213;
+    }
+  }
+
+  .loader {
+    position: relative;
+    width: 90px;
+    height: 14px;
+    box-shadow: 0 3px 0 #f57b18;
+    clip-path: inset(-40px 0 -5px);
+    filter: drop-shadow(0 0 6px rgba(245, 123, 24, 0.8));
+
+    &:before {
+      content: "";
+      position: absolute;
+      inset: auto calc(50% - 17px) 0;
+      height: 50px;
+      --g: no-repeat linear-gradient(#f57b18 0 0);
+      background: var(--g), var(--g), var(--g), var(--g);
+      background-size: 16px 14px;
+      animation:
+        l7-1 2s infinite linear,
+        l7-2 2s infinite linear;
+    }
   }
 }

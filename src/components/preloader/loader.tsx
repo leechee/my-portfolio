@@ -2,25 +2,9 @@
 import styles from "./style.module.scss";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { opacity, slideUp } from "./anim";
-import { usePreloader } from ".";
-
-const steps = [
-  "10%",
-  "20%",
-  "30%",
-  "40%",
-  "50%",
-  "60%",
-  "70%",
-  "80%",
-  "90%",
-  "100%",
-];
+import { slideUp } from "./anim";
 
 export default function Index() {
-  const { isLoading, loadingPercent } = usePreloader();
-  const [index, setIndex] = useState(0);
   // Always start from the SSR fallback so the server-rendered markup matches
   // the client's first render pass; the effect below swaps in real dimensions
   // post-mount, after hydration has already succeeded.
@@ -29,16 +13,6 @@ export default function Index() {
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
   }, []);
-
-  useEffect(() => {
-    if (index == steps.length - 1) return;
-    setTimeout(
-      () => {
-        setIndex(index + 1);
-      },
-      index == 0 ? 1000 : 150
-    );
-  }, [index]);
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height
@@ -69,9 +43,16 @@ export default function Index() {
     >
       {dimension.width > 0 && (
         <>
-          <motion.p variants={opacity} initial="initial" animate="enter">
-            {(loadingPercent - (loadingPercent % 5)).toFixed(0)} %
-          </motion.p>
+          {/* Plain divs, not framer-motion driven: the CSS keyframes start running
+              the instant this paints, and it needs to be visible immediately or
+              the walk cycle runs invisibly for a while and gets caught mid-loop
+              once a JS-driven fade-in finally reveals it. */}
+          <div className={styles.loaderWrap}>
+            <svg className={styles.ring} viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" />
+            </svg>
+            <div className={styles.loader} />
+          </div>
           <svg>
             <motion.path
               variants={curve}
