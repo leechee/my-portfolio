@@ -11,6 +11,7 @@ import { config } from "@/data/config";
 import { useAudio } from "@/contexts/audio-context";
 import { useMouse } from "@/hooks/use-mouse";
 import { trackEvent } from "@/lib/analytics";
+import { experiences } from "@/data/experiences";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -25,14 +26,14 @@ const HeroSection = () => {
   }, [x, y, updateSound]);
 
   return (
-    <section id="hero" className={cn("relative w-full h-screen")}>
+    <section id="hero" className={cn("relative w-full min-h-[100dvh] md:h-screen")}>
       <div className="grid md:grid-cols-2">
         <div
           className={cn(
-            "h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)] z-[2]",
+            "md:h-[calc(100dvh-4rem)] z-[2]",
             "col-span-1",
             "flex flex-col justify-start md:justify-center items-center md:items-start",
-            "pt-28 sm:pt-0 sm:pb-32 md:p-24 lg:p-40 xl:p-48"
+            "pt-28 pb-16 sm:pt-0 sm:pb-32 md:p-24 lg:p-40 xl:p-48"
           )}
         >
           {!isLoading && (
@@ -43,7 +44,7 @@ const HeroSection = () => {
                     className={cn(
                       "md:self-start font-thin text-sm ml-3 text-left mb-2",
                       "cursor-default font-display sm:text-base md:text-lg",
-                      "text-[#f57b18]"
+                      "text-slate-800 dark:text-white"
                     )}
                   >
                     Hi, my name is
@@ -52,8 +53,8 @@ const HeroSection = () => {
                 <BlurIn delay={0.9}>
                   <h1
                     className={cn(
-                      "font-thin text-5xl text-transparent text-slate-800 ml-1 text-left",
-                      "cursor-default text-edge-outline font-display sm:text-6xl md:text-7xl mb-4"
+                      "font-thin text-5xl text-slate-800 dark:text-white ml-1 text-left",
+                      "cursor-default font-display sm:text-6xl md:text-7xl mb-4"
                     )}
                   >
                     Jason Lee.
@@ -68,7 +69,19 @@ const HeroSection = () => {
                       "font-[family-name:var(--font-inter)]"
                     )}
                   >
-                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold">UT Austin</span> who is interested in production ML, robot policy learning, and platform engineering.
+                    I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold text-[#f57b18]">UT Austin</span> who is interested in production ML, robot policy learning, and platform engineering.
+                  </p>
+                </BlurIn>
+                <BlurIn delay={1.3}>
+                  <p
+                    className={cn(
+                      "md:self-start text-sm ml-3 text-left mt-3",
+                      "cursor-default sm:text-base",
+                      "text-slate-600 dark:text-slate-300 font-[family-name:var(--font-inter)] font-normal"
+                    )}
+                  >
+                    <span className="inline-block w-2 h-2 rounded-full bg-[#f57b18] mr-2 align-middle" />
+                    Currently: {experiences[0].role} @ {experiences[0].company}
                   </p>
                 </BlurIn>
               </div>
@@ -132,14 +145,14 @@ const HeroSection = () => {
             </>
           )}
         </div>
-        <div className="grid col-span-1"></div>
+        <div className="hidden md:grid col-span-1"></div>
       </div>
       <div className="hidden md:block absolute bottom-28 left-[50%] translate-x-[-50%] text-center px-4 max-w-md">
         <p className="text-sm text-white font-[family-name:var(--font-inter)]">
           Bobby the robot here and I love music. Click the sound icon on the top right to enable a lofi sound-system. Move your mouse and hover over different buttons to play along!
         </p>
       </div>
-      <div className="absolute bottom-10 md:bottom-10 left-[50%] translate-x-[-50%]">
+      <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
         <ScrollDownIcon />
       </div>
     </section>

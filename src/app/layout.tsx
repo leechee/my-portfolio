@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Archivo_Black } from "next/font/google";
+import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
 import ElasticCursor from "@/components/ui/ElasticCursor";
 import Particles from "@/components/Particles";
@@ -50,15 +50,16 @@ export const metadata: Metadata = {
   },
 };
 
-const archivoBlack = Archivo_Black({
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["100", "200", "300", "400"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["200", "400", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
 });
@@ -69,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={[archivoBlack.className, inter.variable].join(" ")}>
+    <html lang="en" className={[inter.variable, archivo.variable].join(" ")}>
       <head>
         <Script
           defer

@@ -580,7 +580,7 @@ const AnimatedBackground = () => {
           </div>
         }
       >
-        <div className={activeSection === "about" ? "w-full h-full" : "pointer-events-none w-full h-full"}>
+        <div className={activeSection === "about" ? "relative w-full h-full" : "pointer-events-none relative w-full h-full"}>
           <Spline
             ref={splineContainer}
             onLoad={(app: Application) => {
@@ -589,6 +589,14 @@ const AnimatedBackground = () => {
               bypassLoading();
             }}
             scene="/assets/realrobot.spline"
+          />
+          {/* Fades out the Spline scene's floor tile without cropping the light ball's reflection */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[16%]"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(10,10,10,0.7), transparent)",
+            }}
           />
         </div>
       </Suspense>

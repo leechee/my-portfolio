@@ -6,54 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BlurIn } from "../reveal-animations";
 import { useAudio } from "@/contexts/audio-context";
-
-interface ExperienceItem {
-  company: string;
-  logo: string;
-  role: string;
-  location: string;
-  period: string;
-  blogLink?: string;
-}
-
-const experiences: ExperienceItem[] = [
-  {
-    company: "IBM",
-    logo: "/assets/ibm%20logo.png",
-    role: "Software Engineering Intern",
-    location: "Austin, TX",
-    period: "May 2026 - August 2026",
-  },
-  {
-    company: "Amazon",
-    logo: "/assets/amazon_logo.jpg",
-    role: "Guides Program",
-    location: "Remote",
-    period: "September 2025 - May 2026",
-  },
-  {
-    company: "Samsung",
-    logo: "/assets/samsung-logo.png",
-    role: "Software Engineering Intern | Platform Engineering",
-    location: "Austin, TX",
-    period: "May 2025 - August 2025",
-  },
-  {
-    company: "Cross Labs",
-    logo: "/assets/cross-labs-logo.jpg",
-    role: "AI Research Intern",
-    location: "Kyoto, Japan",
-    period: "June 2024 - October 2024",
-    blogLink: "https://www.crosslabs.org/blog/from-aristotle-to-genetic-algorithms-how-i-learned-neural-networks-in-one-summer",
-  },
-  {
-    company: "Texas Robotics",
-    logo: "/assets/texas-robotics-logo.jpg",
-    role: "AI Research Assistant",
-    location: "Austin, TX",
-    period: "January 2024 - May 2024",
-  },
-];
+import { experiences } from "@/data/experiences";
 
 const ExperienceSection = () => {
   const { playPianoNote } = useAudio();
@@ -75,10 +28,10 @@ const ExperienceSection = () => {
           )}
         >
           {/* Section Title */}
-          <BlurIn delay={0.2}>
+          <BlurIn delay={0.2} duration={0.5}>
             <h2
               className={cn(
-                "text-4xl md:text-5xl font-thin text-slate-800 dark:text-white mb-10",
+                "text-4xl md:text-5xl font-thin font-display text-slate-800 dark:text-white mb-10",
                 "cursor-default"
               )}
             >
@@ -92,14 +45,14 @@ const ExperienceSection = () => {
             <div
               className={cn(
                 "absolute left-8 top-0 bottom-0 w-[2px]",
-                "bg-gradient-to-b from-[#BF5700]/20 via-[#BF5700]/50 to-[#BF5700]/20"
+                "bg-gradient-to-b from-[#f57b18]/20 via-[#f57b18]/50 to-[#f57b18]/20"
               )}
             />
 
             {/* Experience Items */}
             <div className="space-y-6">
               {experiences.map((exp, index) => (
-                <BlurIn key={index} delay={0.4 + index * 0.2}>
+                <BlurIn key={index} delay={0.4 + index * 0.2} duration={0.5}>
                   <div className="relative flex gap-6 items-start group">
                     {/* Logo with Timeline Dot */}
                     <div className="relative flex-shrink-0">
@@ -107,9 +60,9 @@ const ExperienceSection = () => {
                         className={cn(
                           "w-16 h-16 rounded-lg overflow-hidden",
                           "bg-white dark:bg-slate-800",
-                          "border-2 border-[#BF5700]/30",
+                          "border-2 border-[#f57b18]/30",
                           "transition-all duration-300",
-                          "group-hover:border-[#BF5700] group-hover:scale-110",
+                          "group-hover:border-[#f57b18] group-hover:scale-110",
                           "shadow-lg",
                           "cursor-pointer"
                         )}
@@ -129,10 +82,10 @@ const ExperienceSection = () => {
                         className={cn(
                           "absolute -left-[1.85rem] top-1/2 -translate-y-1/2",
                           "w-3 h-3 rounded-full",
-                          "bg-[#BF5700]",
+                          "bg-[#f57b18]",
                           "ring-4 ring-slate-100 dark:ring-slate-950",
                           "transition-all duration-300",
-                          "group-hover:scale-150 group-hover:ring-[#BF5700]/20"
+                          "group-hover:scale-150 group-hover:ring-[#f57b18]/20"
                         )}
                       />
                     </div>
@@ -141,7 +94,7 @@ const ExperienceSection = () => {
                     <div className="flex-1 pt-1">
                       <div
                         className={cn(
-                          "text-2xl font-light text-slate-800 dark:text-white",
+                          "text-2xl font-light font-display text-slate-800 dark:text-white",
                           "mb-1"
                         )}
                       >
@@ -163,7 +116,7 @@ const ExperienceSection = () => {
                         )}
                       >
                         <span>{exp.location}</span>
-                        <span className="hidden sm:inline text-[#BF5700]">•</span>
+                        <span className="hidden sm:inline text-[#f57b18]">•</span>
                         <span>{exp.period}</span>
                       </div>
                       {exp.blogLink && (
@@ -191,10 +144,10 @@ const ExperienceSection = () => {
 
         {/* Right Column - Hobbies Section */}
         <div className="hidden md:block col-span-1 px-6 md:px-32 lg:px-48 xl:px-56">
-          <BlurIn delay={0.2}>
+          <BlurIn delay={0.2} duration={0.5}>
             <h2
               className={cn(
-                "text-4xl md:text-5xl font-thin text-slate-800 dark:text-white mb-10",
+                "text-4xl md:text-5xl font-thin font-display text-slate-800 dark:text-white mb-10",
                 "cursor-default"
               )}
             >

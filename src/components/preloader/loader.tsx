@@ -21,10 +21,10 @@ const steps = [
 export default function Index() {
   const { isLoading, loadingPercent } = usePreloader();
   const [index, setIndex] = useState(0);
-  const [dimension, setDimension] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 1920,
-    height: typeof window !== 'undefined' ? window.innerHeight : 1080
-  });
+  // Always start from the SSR fallback so the server-rendered markup matches
+  // the client's first render pass; the effect below swaps in real dimensions
+  // post-mount, after hydration has already succeeded.
+  const [dimension, setDimension] = useState({ width: 1920, height: 1080 });
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });

@@ -29,18 +29,16 @@ export const BlurIn = ({
   const combinedVariants = variant || defaultVariants;
 
   return (
-    <motion.h1
+    <motion.div
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
       transition={{ duration, delay }}
       variants={combinedVariants}
-      className={cn(
-        className
-        // "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
-      )}
+      className={cn(className)}
     >
       {children}
-    </motion.h1>
+    </motion.div>
   );
 };
 
