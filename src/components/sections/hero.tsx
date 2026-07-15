@@ -80,7 +80,7 @@ const HeroSection = () => {
                       "text-slate-600 dark:text-slate-300 font-[family-name:var(--font-inter)] font-normal"
                     )}
                   >
-                    <span className="inline-block w-2 h-2 rounded-full bg-[#f57b18] mr-2 align-middle" />
+                    <span className="inline-block w-2 h-2 rounded-full bg-[#f57b18] mr-2 align-middle animate-pulse" />
                     Currently: {experiences[0].role} @ {experiences[0].company}
                   </p>
                 </BlurIn>
