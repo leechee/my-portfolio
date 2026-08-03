@@ -87,7 +87,7 @@ const HeroSection = () => {
               </div>
               <div className="mt-8 md:ml-2 flex flex-col gap-3">
                 <Link
-                  href="/assets/Jason_Lee_Resume1.pdf"
+                  href="/assets/Jason_Lee_Resume.pdf"
                   target="_blank"
                   className="flex-1"
                   onClick={() => trackEvent("Resume Downloaded")}
