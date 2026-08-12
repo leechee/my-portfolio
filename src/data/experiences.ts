@@ -19,14 +19,14 @@ export const experiences: ExperienceItem[] = [
   {
     company: "Amazon",
     logo: "/assets/amazon_logo.jpg",
-    role: "Guides Program",
+    role: "Amazon Robotics Mentee",
     location: "Remote",
     period: "September 2025 - May 2026",
   },
   {
     company: "Samsung",
     logo: "/assets/samsung-logo.png",
-    role: "Software Engineering Intern | Platform Engineering",
+    role: "Software Engineering Intern — Platform Engineering",
     location: "Austin, TX",
     period: "May 2025 - August 2025",
   },
