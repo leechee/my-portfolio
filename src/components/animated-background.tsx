@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 import { Skill, SkillNames, SKILLS } from "@/data/constants";
-import { sleep } from "@/lib/utils";
+import { cn, sleep } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePreloader } from "./preloader";
 import { useTheme } from "next-themes";
@@ -89,7 +89,7 @@ const STATES = {
   contact: {
     desktop: {
       scale: { x: 0.3, y: 0.3, z: 0.3 },
-      position: { x: 500, y: -250, z: 0 },
+      position: { x: 900, y: -250, z: 0 },
       rotation: {
         x: 0,
         y: 0,
@@ -580,7 +580,13 @@ const AnimatedBackground = () => {
           </div>
         }
       >
-        <div className={activeSection === "about" ? "relative w-full h-full" : "pointer-events-none relative w-full h-full"}>
+        <div
+          className={cn(
+            "relative w-full h-full transition-opacity duration-700 ease-out",
+            activeSection !== "about" && "pointer-events-none",
+            splineApp ? "opacity-100" : "opacity-0"
+          )}
+        >
           <Spline
             ref={splineContainer}
             onLoad={(app: Application) => {

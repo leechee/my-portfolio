@@ -14,6 +14,7 @@ import projects, { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 import { useAudio } from "@/contexts/audio-context";
 import { trackEvent } from "@/lib/analytics";
+import { BlurIn } from "../reveal-animations";
 
 const ProjectsSection = () => {
   const { playPianoNote } = useAudio();
@@ -37,13 +38,14 @@ const ProjectsSection = () => {
       <div className="mb-12 md:mb-96"></div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-2 pb-12">
         {projects.map((project, index) => (
-          <Modall
-            key={project.src}
-            project={project}
-            note={projectNotes[index % projectNotes.length]}
-            onHover={playPianoNote}
-            index={index}
-          />
+          <BlurIn key={project.src} delay={index * 0.06} duration={0.5}>
+            <Modall
+              project={project}
+              note={projectNotes[index % projectNotes.length]}
+              onHover={playPianoNote}
+              index={index}
+            />
+          </BlurIn>
         ))}
       </div>
     </section>
@@ -62,7 +64,7 @@ const Modall = ({
 }) => {
   return (
     <div
-      className="flex items-start justify-center"
+      className="flex items-start justify-center group"
       onMouseEnter={() => onHover(note)}
       onClick={() => trackEvent("Project Viewed", { project: project.title })}
     >
@@ -70,13 +72,15 @@ const Modall = ({
         <ModalTrigger className="bg-transparent flex flex-col group/modal-btn w-full">
           <div
             className={cn(
-              "relative w-full h-auto overflow-hidden",
+              "relative w-full h-auto overflow-hidden rounded-lg",
+              "transition-[transform,box-shadow] duration-300 ease-out",
+              "group-hover:-translate-y-1 group-hover:shadow-xl",
               project.id === "my-portfolio" && "border border-white/30"
             )}
             style={{ aspectRatio: "3/2" }}
           >
             <Image
-              className="w-full h-full hover:scale-[1.05] transition-all object-cover"
+              className="w-full h-full group-hover:scale-[1.05] transition-transform duration-300 ease-out object-cover"
               src={project.src}
               alt={project.title}
               width={600}

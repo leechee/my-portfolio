@@ -41,19 +41,40 @@ export const usePreloader = () => {
   return context;
 };
 const LOADING_TIME = 1.67;
+// Hard ceiling so a page can never hang on the curtain forever (e.g. a page
+// that never mounts a Spline scene at all, or Spline failing to load). The
+// normal path below always resolves well before this fires.
+const MAX_WAIT_MS = 10000;
+
 function Preloader({ children, disabled = false }: PreloaderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingPercent, setLoadingPercent] = useState(0);
-  const [splineLoaded, setSplineLoaded] = useState(false);
+  const [splineLoaded, setSplineLoadedState] = useState(false);
   const loadingTween = useRef<gsap.core.Tween>();
   const timerCompleted = useRef(false);
+  // Mirrors `splineLoaded` in a ref so gating checks always read the latest
+  // value instead of a value captured in a stale effect closure.
+  const splineLoadedRef = useRef(false);
+  const resolved = useRef(false);
 
+  const setSplineLoaded = (loaded: boolean) => {
+    splineLoadedRef.current = loaded;
+    setSplineLoadedState(loaded);
+  };
+
+  const finishLoading = () => {
+    if (resolved.current) return;
+    resolved.current = true;
+    loadingTween.current?.progress(0.99).kill();
+    setLoadingPercent(100);
+    setIsLoading(false);
+  };
+
+  // Only finishes once both the branding timer and Spline are ready, so the
+  // curtain never lifts onto an unfinished scene.
   const bypassLoading = () => {
-    // Only finish loading if both timer and Spline are ready
-    if (timerCompleted.current && splineLoaded) {
-      loadingTween.current?.progress(0.99).kill();
-      setLoadingPercent(100);
-      setIsLoading(false);
+    if (timerCompleted.current && splineLoadedRef.current) {
+      finishLoading();
     }
   };
 
@@ -68,20 +89,13 @@ function Preloader({ children, disabled = false }: PreloaderProps) {
       },
       onComplete: () => {
         timerCompleted.current = true;
-        // Only finish if Spline is also loaded
-        if (splineLoaded) {
-          setIsLoading(false);
-        }
+        if (splineLoadedRef.current) finishLoading();
       },
     });
-  }, [splineLoaded]);
 
-  // Effect to check if we can finish loading when Spline loads
-  useEffect(() => {
-    if (splineLoaded && timerCompleted.current) {
-      setIsLoading(false);
-    }
-  }, [splineLoaded]);
+    const safety = setTimeout(finishLoading, MAX_WAIT_MS);
+    return () => clearTimeout(safety);
+  }, []);
 
   return (
     <preloaderContext.Provider

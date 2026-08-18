@@ -381,13 +381,13 @@ const projects: Project[] = [
             Three policy search methods were evaluated against the same environment configuration:
           </p>
           <p className="font-mono mb-2">
-            <strong>Genetic Algorithm (GA)</strong> — Population of 30 individuals, tournament selection (k=5), arithmetic crossover, and adaptive Gaussian mutation (σ: 0.1 → 0.005) with 2-elite elitism. Network: MLP 42 → [128, 128, 64] → 8 (~31k parameters).
+            <strong>Genetic Algorithm (GA)</strong>: Population of 30 individuals, tournament selection (k=5), arithmetic crossover, and adaptive Gaussian mutation (σ: 0.1 → 0.005) with 2-elite elitism. Network: MLP 42 → [128, 128, 64] → 8 (~31k parameters).
           </p>
           <p className="font-mono mb-2">
-            <strong>CMA-ES</strong> — Uses the cma library (Hansen, 2016) with population 20, max 50 generations, initial σ=0.5, and the same ~31k-parameter network architecture.
+            <strong>CMA-ES</strong>: Uses the cma library (Hansen, 2016) with population 20, max 50 generations, initial σ=0.5, and the same ~31k-parameter network architecture.
           </p>
           <p className="font-mono mb-2">
-            <strong>Soft Actor-Critic (SAC)</strong> — stable-baselines3 implementation with MLP [256, 256] policy, 1M replay buffer, batch size 256, lr=3e-4, 500k timesteps. Matches the robosuite benchmark configuration.
+            <strong>Soft Actor-Critic (SAC)</strong>: stable-baselines3 implementation with MLP [256, 256] policy, 1M replay buffer, batch size 256, lr=3e-4, 500k timesteps. Matches the robosuite benchmark configuration.
           </p>
           <TypographyH3 className="my-4 mt-8">Results</TypographyH3>
           <p className="font-mono mb-2">
@@ -395,7 +395,7 @@ const projects: Project[] = [
           </p>
           <TypographyH3 className="my-4 mt-8">Why Gradient-Free Methods Fail Here</TypographyH3>
           <p className="font-mono mb-2">
-            CMA-ES is designed for smooth, low-dimensional optimization. Its covariance adaptation becomes statistically unreliable above ~a few hundred parameters — applying it to 31,000 weights with only 20 samples per generation provides insufficient signal to adapt the search distribution meaningfully. The GA faces the same curse of dimensionality: random mutation across 31k weights is too coarse to discover coordinated reach-grasp-lift behaviors. SAC uses backpropagation to compute exact gradients from every timestep, delivering orders of magnitude more directional information than fitness-only feedback. Neuroevolution is effective when either the policy is parameterized compactly (&lt;500 parameters) or methods designed for high dimensionality are used (e.g., OpenAI ES with antithetic sampling).
+            CMA-ES is designed for smooth, low-dimensional optimization. Its covariance adaptation becomes statistically unreliable above ~a few hundred parameters, and applying it to 31,000 weights with only 20 samples per generation provides insufficient signal to adapt the search distribution meaningfully. The GA faces the same curse of dimensionality: random mutation across 31k weights is too coarse to discover coordinated reach-grasp-lift behaviors. SAC uses backpropagation to compute exact gradients from every timestep, delivering orders of magnitude more directional information than fitness-only feedback. Neuroevolution is effective when either the policy is parameterized compactly (&lt;500 parameters) or methods designed for high dimensionality are used (e.g., OpenAI ES with antithetic sampling).
           </p>
         </div>
       );

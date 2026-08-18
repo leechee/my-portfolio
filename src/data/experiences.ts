@@ -12,7 +12,7 @@ export const experiences: ExperienceItem[] = [
   {
     company: "IBM",
     logo: "/assets/ibm%20logo.png",
-    role: "Software Engineering Intern — Agentic AI",
+    role: "Software Engineering Intern, Agentic AI",
     location: "Austin, TX",
     period: "May 2026 - August 2026",
   },
@@ -26,7 +26,7 @@ export const experiences: ExperienceItem[] = [
   {
     company: "Samsung",
     logo: "/assets/samsung-logo.png",
-    role: "Software Engineering Intern — Platform Engineering",
+    role: "Software Engineering Intern, Platform Engineering",
     location: "Austin, TX",
     period: "May 2025 - August 2025",
   },

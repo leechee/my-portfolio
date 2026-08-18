@@ -11,7 +11,6 @@ import { config } from "@/data/config";
 import { useAudio } from "@/contexts/audio-context";
 import { useMouse } from "@/hooks/use-mouse";
 import { trackEvent } from "@/lib/analytics";
-import { experiences } from "@/data/experiences";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -72,22 +71,10 @@ const HeroSection = () => {
                     I&apos;m a <span className="font-bold">computational engineering honors </span> and <span className="font-bold">robotics</span> student at <span className="font-bold text-[#f57b18]">UT Austin</span> who is interested in agentic AI, production ML, robot policy learning, and platform engineering.
                   </p>
                 </BlurIn>
-                <BlurIn delay={1.3}>
-                  <p
-                    className={cn(
-                      "md:self-start text-sm ml-3 text-left mt-3",
-                      "cursor-default sm:text-base",
-                      "text-slate-600 dark:text-slate-300 font-[family-name:var(--font-inter)] font-normal"
-                    )}
-                  >
-                    <span className="inline-block w-2 h-2 rounded-full bg-[#f57b18] mr-2 align-middle animate-pulse" />
-                    Currently: {experiences[0].role} @ {experiences[0].company}
-                  </p>
-                </BlurIn>
               </div>
               <div className="mt-8 md:ml-2 flex flex-col gap-3">
                 <Link
-                  href="/assets/Jason_Lee_Resume.pdf"
+                  href="/assets/Jason_Lee_Resume1.pdf"
                   target="_blank"
                   className="flex-1"
                   onClick={() => trackEvent("Resume Downloaded")}

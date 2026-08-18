@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
-import ElasticCursor from "@/components/ui/ElasticCursor";
 import Particles from "@/components/Particles";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header/header";
@@ -96,7 +95,6 @@ export default function RootLayout({
                 <MusicToggle />
               </TooltipProvider>
               <Toaster />
-              <ElasticCursor />
             </AudioProvider>
           </Preloader>
         </ThemeProvider>
